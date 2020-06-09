@@ -1,0 +1,6 @@
+framework module Pods_FrontYard {
+  umbrella header "Pods-FrontYard-umbrella.h"
+
+  export *
+  module * { export * }
+}
