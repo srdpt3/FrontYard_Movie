@@ -105,7 +105,11 @@ struct MovieDetailListView: View {
             Divider()
             
             if movie.youtubeTrailers != nil && movie.youtubeTrailers!.count > 0 {
-                Text("Trailer").font(.headline)
+                HStack{
+                    Text("Trailer").font(.headline)
+                    Image(systemName: "play.circle.fill").resizable().frame(width: 20, height: 20)
+                                               .foregroundColor(Color("Color2"))
+                }
                 
                 ForEach(movie.youtubeTrailers!) { trailer in
                     Button(action: {
@@ -114,8 +118,9 @@ struct MovieDetailListView: View {
                         HStack {
                             Text(trailer.name)
                             Spacer()
+                            
                             Image(systemName: "play.circle.fill")
-                                .foregroundColor(Color(UIColor.systemBlue))
+                                .foregroundColor(Color("Color2"))
                         }
                     }
                 }
@@ -155,3 +160,9 @@ struct MovieDetailImage: View {
 //    }
 //}
 
+
+struct MovieDetailView_Previews: PreviewProvider {
+    static var previews: some View {
+        /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
+    }
+}

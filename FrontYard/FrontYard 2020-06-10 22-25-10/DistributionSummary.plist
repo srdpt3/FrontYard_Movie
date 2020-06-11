@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>FrontYard.ipa</key>
+	<array>
+		<dict>
+			<key>architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
+			<key>certificate</key>
+			<dict>
+				<key>SHA1</key>
+				<string>46F867238F1595F209918EF706533241A71F449E</string>
+				<key>dateExpires</key>
+				<string>9/26/20</string>
+				<key>type</key>
+				<string>Apple Development</string>
+			</dict>
+			<key>embeddedBinaries</key>
+			<array>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>arm64</string>
+					</array>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>46F867238F1595F209918EF706533241A71F449E</string>
+						<key>dateExpires</key>
+						<string>9/26/20</string>
+						<key>type</key>
+						<string>Apple Development</string>
+					</dict>
+					<key>name</key>
+					<string>SDWebImage.framework</string>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>CSE9343A58</string>
+						<key>name</key>
+						<string>Dustin yang</string>
+					</dict>
+				</dict>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>arm64</string>
+					</array>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>46F867238F1595F209918EF706533241A71F449E</string>
+						<key>dateExpires</key>
+						<string>9/26/20</string>
+						<key>type</key>
+						<string>Apple Development</string>
+					</dict>
+					<key>name</key>
+					<string>SDWebImageSwiftUI.framework</string>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>CSE9343A58</string>
+						<key>name</key>
+						<string>Dustin yang</string>
+					</dict>
+				</dict>
+			</array>
+			<key>entitlements</key>
+			<dict>
+				<key>application-identifier</key>
+				<string>CSE9343A58.movie.FrontYard</string>
+				<key>com.apple.developer.team-identifier</key>
+				<string>CSE9343A58</string>
+				<key>get-task-allow</key>
+				<true/>
+				<key>keychain-access-groups</key>
+				<array>
+					<string>CSE9343A58.movie.FrontYard</string>
+				</array>
+			</dict>
+			<key>name</key>
+			<string>FrontYard.app</string>
+			<key>profile</key>
+			<dict>
+				<key>UUID</key>
+				<string>7d856a2e-16f2-461d-be94-016886fb612d</string>
+				<key>name</key>
+				<string>iOS Team Provisioning Profile: *</string>
+			</dict>
+			<key>team</key>
+			<dict>
+				<key>id</key>
+				<string>CSE9343A58</string>
+				<key>name</key>
+				<string>Dustin yang</string>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>

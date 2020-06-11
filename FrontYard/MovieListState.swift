@@ -13,6 +13,7 @@ class MovieListState: ObservableObject {
     @Published var movies: [Movie]?
     @Published var isLoading: Bool = false
     @Published var error: NSError?
+    @Published var Grid : [Int] = []
 
     private let movieService: MovieService
     
@@ -29,6 +30,14 @@ class MovieListState: ObservableObject {
             switch result {
             case .success(let response):
                 self.movies = response.results
+                for i in stride(from: 0, to: self.movies!.count, by: 2){
+                    
+                    if i != self.movies!.count{
+                        self.Grid.append(i)
+                        
+                    }
+                    
+                }
                 
             case .failure(let error):
                 self.error = error as NSError
