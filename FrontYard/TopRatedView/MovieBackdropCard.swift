@@ -18,6 +18,10 @@ struct MovieBackdropCard: View {
         VStack {
             AnimatedImage(url: self.movie.posterURL)
                 .resizable().frame(width :  (UIScreen.main.bounds.width ) / 2.07, height:  (UIScreen.main.bounds.height ) / 4.0).cornerRadius(20).aspectRatio(contentMode: .fit)
+            
+                              Text(movie.title)
+                                .font(.caption)
+                                  .padding(.top,5)
             HStack {
                 if !movie.ratingText.isEmpty {
                     Text(movie.ratingText).font(.caption).foregroundColor(.yellow)

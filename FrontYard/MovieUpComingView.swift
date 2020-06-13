@@ -21,16 +21,9 @@ struct MovieUpComingView: View {
             VStack   {
                 //                GeometryReader{_ in
                 VStack(spacing: 10){
-                    //
-                    //                        HStack{
-                    //
-                    //                            Text("Up Coming").fontWeight(.heavy).font(.title).foregroundColor(Color("Color2"))
-                    //                            Spacer()
-                    //
-                    //                        }.padding(.leading, 16)
-                    
+
                     if self.upcomingState.movies != nil {
-                        MainSubViewUpComing(title: "Up Coming", movies: self.upcomingState.movies!, grid: self.upcomingState.Grid)
+                        MainSubViewUpComing(title: "Up Coming", movies: self.upcomingState.movies!)
                     } else {
                         LoadingView(isLoading: self.upcomingState.isLoading, error: self.upcomingState.error) {
                             self.upcomingState.loadMovies(with: .topRated)
@@ -65,56 +58,36 @@ struct MainSubViewUpComing : View{
     let title: String
     let movies: [Movie]
     
-    let grid : [Int]
     var body : some View{
         
         VStack(spacing: 0){
-            
-            VStack{
-                if !self.grid.isEmpty{
-                    
-                    
-                    ScrollView(.vertical, showsIndicators: false) {
+            ScrollView(.vertical, showsIndicators: false) {
+                VStack(spacing: 20){
+                    ForEach(0..<movies.chunked(3).count){index in
                         
-                        
-                        VStack(spacing: 20){
-                            ForEach(self.grid,id: \.self){i in
+                        HStack(spacing: 8){
+                            ForEach(self.movies.chunked(3)[index]){city in
                                 
-                                HStack(spacing: 16){
-                                    ForEach(i...i+1,id:  \.self){j in
-                                        VStack{
-                                            if j != self.movies.count{
-                                                
-                                                NavigationLink(destination: MovieDetailView(movieId: self.movies[j].id)) {
-                                                    
-                                                    MovieUpComingCard(movie: self.movies[j])
-                                                    
-                                                    
-                                                    
-                                                }
-                                                
-                                                
-                                                
-                                            }
-                                        }
-                                    }
+                                NavigationLink(destination: MovieDetailView(movieId: city.id)) {
                                     
-                                    if i == self.grid.last! && self.movies.count % 2 != 0{
-                                        
-                                        Spacer(minLength:  0)
-                                    }
-                                }.padding(.horizontal, 12)
+                                    MovieUpComingCard(movie: city)
+                                    
+                                    
+                                    
+                                }
+                                
+                                
                             }
-                        }
+                        }.padding(.horizontal, 12)
+                        
                     }
                 }
                 
-                
-                
-                
-                
-            }.padding()
-        }
+            }
+            
+        }.padding()
+        
+        
     }
 }
 
@@ -124,20 +97,19 @@ struct MovieUpComingCard: View {
     var body: some View {
         VStack {
             AnimatedImage(url: self.movie.posterURL)
-                .resizable().frame(width: (UIScreen.main.bounds.width - 75) / 2, height: (UIScreen.main.bounds.height ) / 4.2).cornerRadius(20)
-            
+                .resizable().frame(width: (UIScreen.main.bounds.width - 35) / 3, height: (UIScreen.main.bounds.height ) / 5).cornerRadius(15)
             HStack {
-                //                if !movie.ratingText.isEmpty {
-                //                    Text(movie.ratingText).font(.footnote).foregroundColor(.yellow)
-                //                }
-                Text(movie.title).font(.footnote)
+                
+                Text(movie.title).font(.footnote).lineLimit(1)
             }
             
             
-        } .padding(.all, 5)
-            .frame(width: (UIScreen.main.bounds.width - 60) / 2)
+            
+            
+        } .padding(.all, 8)
+            .frame(width: (UIScreen.main.bounds.width - 25) / 3)
             .background(Color("Color1"))
-            .cornerRadius(20)
+            .cornerRadius(15)
             .shadow(color: Color.black.opacity(0.1), radius: 5, x: 8, y: 8)
             .shadow(color: Color.white.opacity(0.5), radius: 5, x: -8, y: -8)
         
@@ -153,3 +125,11 @@ struct MovieUpComingCard: View {
 //    }
 //}
 //
+
+extension Array{
+    func chunked(_ size: Int)->[[Element]]{
+        stride(from: 0, to: count, by: size).map{
+            Array(self[$0 ..< Swift.min($0+size, count)])
+        }
+    }
+}

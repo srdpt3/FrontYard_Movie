@@ -18,12 +18,17 @@ class MovieStore: MovieService {
     private let urlSession = URLSession.shared
     private let jsonDecoder = Utils.jsonDecoder
     
-    func fetchMovies(from endpoint: MovieListEndpoint, completion: @escaping (Result<MovieResponse, MovieError>) -> ()) {
+    func fetchMovies(from endpoint: MovieListEndpoint, page: Int,  completion: @escaping (Result<MovieResponse, MovieError>) -> ()) {
         guard let url = URL(string: "\(baseAPIURL)/movie/\(endpoint.rawValue)") else {
             completion(.failure(.invalidEndpoint))
             return
         }
-        self.loadURLAndDecode(url: url, completion: completion)
+//        self.loadURLAndDecode(url: url, completion: completion)
+        self.loadURLAndDecode(url: url, params: [
+                  "language": "ko-KOR",
+                  "page": String(page),
+   
+              ], completion: completion)
     }
     
     func fetchMovie(id: Int, completion: @escaping (Result<Movie, MovieError>) -> ()) {
@@ -32,7 +37,9 @@ class MovieStore: MovieService {
             return
         }
         self.loadURLAndDecode(url: url, params: [
-            "append_to_response": "videos,credits,recommendations"
+            "append_to_response": "videos,credits,recommendations,release_dates",
+            "language": "ko-KOR",
+
         ], completion: completion)
     }
     
@@ -40,15 +47,16 @@ class MovieStore: MovieService {
 //    https://api.themoviedb.org/3/movie/419704?videos?api_key=0c33e2ac9a513295d14d49fa0e11f82b&language=en-US
 //    https://api.themoviedb.org/3/movie/419704/credits?api_key=0c33e2ac9a513295d14d49fa0e11f82b&language=en-US
 //    https://api.themoviedb.org/3/movie/419704?api_key=0c33e2ac9a513295d14d49fa0e11f82b&append_to_response=videos,credits,recommendations
+//    https://api.themoviedb.org/3/movie/upcoming?api_key=0c33e2ac9a513295d14d49fa0e11f82b&language=en-US&page=1
     func searchMovie(query: String, completion: @escaping (Result<MovieResponse, MovieError>) -> ()) {
         guard let url = URL(string: "\(baseAPIURL)/search/movie") else {
             completion(.failure(.invalidEndpoint))
             return
         }
         self.loadURLAndDecode(url: url, params: [
-            "language": "en-US",
-            "include_adult": "false",
-            "region": "US",
+            "language": "ko-KOR",
+            "include_adult": "true",
+            "region": "KOR",
             "query": query
         ], completion: completion)
     }

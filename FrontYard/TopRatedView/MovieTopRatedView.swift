@@ -22,14 +22,14 @@ struct MovieTopRatedView: View {
         NavigationView {
             VStack   {
                 GeometryReader{_ in
-                    VStack(spacing: 10){
+                    VStack(spacing: 5){
 
                         HStack{
 
-                            Text("Top Rated").fontWeight(.heavy).font(.title).foregroundColor(Color("Color2"))
+                            Text("Top Rated").fontWeight(.heavy).font(.headline).foregroundColor(Color("Color2"))
                             Spacer()
 
-                        }.padding(.leading, 16)
+                        }.padding(.leading, 12)
                         
                         if self.topRatedState.movies != nil {
                             MovieBackdropCarouselView(title: "Top Rated", movies: self.topRatedState.movies!)
@@ -50,7 +50,7 @@ struct MovieTopRatedView: View {
                 //                .listRowInsets(EdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0))
 
                 GeometryReader{_ in
-                    VStack(spacing: 10){
+                    VStack(spacing: 5){
                  
                         
                         if self.popularState.movies != nil {

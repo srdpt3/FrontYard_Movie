@@ -16,34 +16,36 @@ struct MoviePopularCarouselView: View {
         VStack(alignment: .leading) {
             HStack{
                 
-                Text("Popular").fontWeight(.heavy).font(.title)
+                Text("Popular").fontWeight(.heavy).font(.headline)
                     .foregroundColor(Color("Color2"))
-                Spacer()
+//                Spacer()
 
                 
             }.padding(.leading, 12)
-            
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(alignment: .top, spacing: 12) {
-                    HStack(spacing : 10){
-                        ForEach(self.movies) { movie in
-                            NavigationLink(destination: MovieDetailView(movieId: movie.id)) {
-                                MoviePopularCard(movie: movie)
-                                
-                                
-                                
+            VStack{
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 12) {
+                        HStack(spacing : 10){
+                            ForEach(self.movies) { movie in
+                                NavigationLink(destination: MovieDetailView(movieId: movie.id)) {
+                                    MoviePopularCard(movie: movie)
+                                    
+                                    
+                                    
+                                }
+                                .buttonStyle(PlainButtonStyle())
+                                .padding(.leading, movie.id == self.movies.first!.id ? 12 : 0)
+                                .padding(.trailing, movie.id == self.movies.last!.id ? 12 : 0)
                             }
-                            .buttonStyle(PlainButtonStyle())
-                            .padding(.leading, movie.id == self.movies.first!.id ? 12 : 0)
-                            .padding(.trailing, movie.id == self.movies.last!.id ? 12 : 0)
                         }
+                        
+                        
+                        
+                        
                     }
-                    
-                    
-                    
-                    
                 }
             }
+            Spacer(minLength: 0)
         }
     }
 }

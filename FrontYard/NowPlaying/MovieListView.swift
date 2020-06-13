@@ -36,7 +36,7 @@ struct MovieListView: View {
             
             
             
-        }.background(Color("Color1"))
+        }.background(Color("Color1")).padding(.bottom, 45)
         
     }
 }

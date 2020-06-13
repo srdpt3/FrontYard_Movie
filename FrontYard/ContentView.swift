@@ -25,7 +25,8 @@ struct Home : View {
     
     @State var index = 0
     @State var show = false
-    
+    @State private var isSettingsOpen = false
+
     var body: some View{
         
         ZStack{
@@ -238,7 +239,7 @@ struct Home : View {
                     
                     // Changing Name Based On Index...
                     
-                    Text(self.index == 0 ? "Now Playing" : (self.index == 1 ? "Trending" : (self.index == 2 ? "Upcoming Movies" : "Search Movie")))
+                    Text(self.index == 0 ? "Now Playing" : (self.index == 1 ? "Trending" : (self.index == 2 ? "Upcoming" : "Search Movie")))
                         .font(.title)
                         .foregroundColor(Color("Color2")).fontWeight(.bold)
                     
@@ -270,7 +271,7 @@ struct Home : View {
                             MovieSearchView()
                         }
                         else{
-                             Color("Color2")
+                             SettingsView(isSettingsOpen: self.$isSettingsOpen)
                         }
                     }
                 }.background(Color("Color1"))

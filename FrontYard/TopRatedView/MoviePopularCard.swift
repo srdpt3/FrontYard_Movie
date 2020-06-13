@@ -11,14 +11,17 @@ import SDWebImageSwiftUI
 
 struct MoviePopularCard: View {
         let movie: Movie
-        @ObservedObject var imageLoader = ImageLoader()
         
         var body: some View {
             VStack {
                 AnimatedImage(url: self.movie.posterURL)
                     .resizable().frame(width :  (UIScreen.main.bounds.width ) / 1.7, height:  (UIScreen.main.bounds.height ) / 4.5).cornerRadius(20).aspectRatio(contentMode: .fill)
                 
+                                  Text(movie.title)
+                                    .font(.callout)
+                                      .padding(.top,5)
                 HStack {
+  
                     if !movie.ratingText.isEmpty {
                         Text(movie.ratingText).font(.caption).foregroundColor(.yellow)
                     }
@@ -28,16 +31,12 @@ struct MoviePopularCard: View {
                 
             } .padding(.vertical, 10)
                 // half screen - spacing - two side paddings = 60
-                .frame(width: (UIScreen.main.bounds.width ) / 1.5)
+                .frame(width: (UIScreen.main.bounds.width ) / 1.5, height: (UIScreen.main.bounds.height ) / 3.2)
                 .background(Color("Color1"))
                 .cornerRadius(20)
                 .shadow(color: Color.black.opacity(0.1), radius: 5, x: 8, y: 8)
                 .shadow(color: Color.white.opacity(0.5), radius: 5, x: -8, y: -8)
-                
-                
-                .onAppear {
-    //                self.imageLoader.loadImage(with: self.movie.posterURL)
-            }
+
         }
         
 }

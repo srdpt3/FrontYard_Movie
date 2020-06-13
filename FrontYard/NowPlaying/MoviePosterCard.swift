@@ -12,56 +12,31 @@ import SDWebImageSwiftUI
 struct MoviePosterCard: View {
     
     let movie: Movie
-    //    @ObservedObject var imageLoader = ImageLoader()
-    
     var body: some View {
-        HStack(alignment: .center) { 
-            
-            VStack{
-                AnimatedImage(url: self.movie.posterURL)
-                    .resizable().frame(width : (UIScreen.main.bounds.width - 90), height: (UIScreen.main.bounds.height ) / 3.1).cornerRadius(20).aspectRatio(contentMode: .fit)
-                
-                Text(movie.title)
-                    .font(.title)
-                    .padding(.top,5)
-                HStack {
-                    if !movie.ratingText.isEmpty {
-                        Text(movie.ratingText).foregroundColor(.yellow)
-                    }
-                    Text(movie.scoreText).fontWeight(.medium)
+
+        VStack {
+            AnimatedImage(url: self.movie.posterURL)
+                .resizable().frame(width: (UIScreen.main.bounds.width - 75) / 2, height: (UIScreen.main.bounds.height ) / 4.2).cornerRadius(20)
+            HStack {
+             
+                         Text(movie.title).font(.footnote)
+                     }
+            HStack {
+                if !movie.ratingText.isEmpty {
+                    Text(movie.ratingText).font(.footnote).foregroundColor(.yellow)
                 }
-                HStack {
-                    Text("Release Date: ")     .font(.subheadline)
-                                       .padding(.top,5)
-                    Text(movie.releaseDate!)
-                        .font(.subheadline)
-                        .padding(.top,5)
-                }
-                
-                
-                
-            }  .padding(.all,20)
-                // half screen - spacing - two side paddings = 60
-                .frame(width: (UIScreen.main.bounds.width - 50))
-                .background(Color("Color1"))
-                .cornerRadius(20)
-                .shadow(color: Color.black.opacity(0.1), radius: 5, x: 8, y: 8)
-                .shadow(color: Color.white.opacity(0.5), radius: 5, x: -8, y: -8)
+                 Text(movie.scoreText).fontWeight(.medium).foregroundColor(Color("Color2"))
+         
+            }
+         
             
-            //            } else {
-            //                Rectangle()
-            //                    .fill(Color.gray.opacity(0.3))
-            //                    .cornerRadius(8)
-            //                    .shadow(radius: 4)
-            //
-            //                Text(movie.title)
-            //                    .multilineTextAlignment(.center)
-            //            }
-        }
-            //        .frame(width: 204, height: 306)
-            .onAppear {
-                //                self.imageLoader.loadImage(with: self.movie.posterURL)
-        }
+            
+        } .padding(.all, 5)
+            .frame(width: (UIScreen.main.bounds.width - 60) / 2)
+            .background(Color("Color1"))
+            .cornerRadius(20)
+            .shadow(color: Color.black.opacity(0.1), radius: 5, x: 8, y: 8)
+            .shadow(color: Color.white.opacity(0.5), radius: 5, x: -8, y: -8)
     }
 }
 
