@@ -25,7 +25,7 @@ class MovieStore: MovieService {
         }
 //        self.loadURLAndDecode(url: url, completion: completion)
         self.loadURLAndDecode(url: url, params: [
-                  "language": "ko-KOR",
+                  "language": "en-US",
                   "page": String(page),
    
               ], completion: completion)
@@ -38,7 +38,7 @@ class MovieStore: MovieService {
         }
         self.loadURLAndDecode(url: url, params: [
             "append_to_response": "videos,credits,recommendations,release_dates",
-            "language": "ko-KOR",
+            "language": "en-US",
 
         ], completion: completion)
     }

@@ -58,9 +58,9 @@ struct Home : View {
                         
                     }) {
                         
-                        HStack(spacing: 25){
+                        HStack(spacing: 20){
                             
-                            Image(systemName: "film")
+                            Image(systemName: "film").resizable().frame(width: 18, height: 18)
                                 .foregroundColor(self.index == 0 ? Color("Color2") : Color.white)
                             Text("Now Playing")
                                 .foregroundColor(self.index == 0 ? Color("Color2") : Color.white)
@@ -83,9 +83,9 @@ struct Home : View {
                         
                     }) {
                         
-                        HStack(spacing: 25){
+                        HStack(spacing: 20){
                             
-                            Image("heart")
+                            Image("heart").resizable().frame(width: 18, height: 18)
                                 .foregroundColor(self.index == 1 ? Color("Color2") : Color.white)
                             
                             
@@ -109,9 +109,9 @@ struct Home : View {
                         
                     }) {
                         
-                        HStack(spacing: 25){
+                        HStack(spacing: 20){
                             
-                            Image(systemName: "calendar")
+                            Image(systemName: "calendar").resizable().frame(width: 18, height: 18)
                                 .foregroundColor(self.index == 2 ? Color("Color2") : Color.white)
                             
                             
@@ -135,9 +135,9 @@ struct Home : View {
                         
                     }) {
                         
-                        HStack(spacing: 25){
+                        HStack(spacing: 20){
                             
-                            Image("Search")
+                            Image("Search").resizable().frame(width: 18, height: 18)
                                 .foregroundColor(self.index == 3 ? Color("Color2") : Color.white)
                             
                             
@@ -166,9 +166,9 @@ struct Home : View {
                         }
                     }) {
                         
-                        HStack(spacing: 25){
+                        HStack(spacing: 20){
                             
-                            Image("settings")
+                            Image("settings").resizable().frame(width: 18, height: 18)
                                 .foregroundColor(Color.white)
                             
                             
@@ -239,7 +239,7 @@ struct Home : View {
                     
                     // Changing Name Based On Index...
                     
-                    Text(self.index == 0 ? "Now Playing" : (self.index == 1 ? "Trending" : (self.index == 2 ? "Upcoming" : "Search Movie")))
+                    Text(self.index == 0 ? "Now Playing" : (self.index == 1 ? "Trending" : (self.index == 2 ? "Upcoming" : (self.index == 3 ? "Search Movies" : "Info"))))
                         .font(.title)
                         .foregroundColor(Color("Color2")).fontWeight(.bold)
                     
@@ -290,94 +290,3 @@ struct Home : View {
         .edgesIgnoringSafeArea(.all)
     }
 }
-
-// Mainpage View...
-
-struct MainPage : View {
-    
-    var body: some View{
-        
-        VStack{
-            
-            ZStack(alignment: .bottomTrailing) {
-                
-                VStack(spacing: 12){
-                    
-                    Image("top")
-                        .resizable()
-                        .frame(height: 210)
-                    
-                    Text("Bell Local Helmet")
-                        .font(.title)
-                        .fontWeight(.bold)
-                        .foregroundColor(.black)
-                        .padding(.top, 10)
-                    
-                    Text("Orange Cycle Helmet")
-                        .foregroundColor(.gray)
-                }
-                .padding()
-                .background(Color.black.opacity(0.06))
-                .cornerRadius(15)
-                .padding()
-                
-                // Cart Button...
-                
-                Button(action: {
-                    
-                    
-                }) {
-                    
-                    Image("cart")
-                        .foregroundColor(.white)
-                        .padding()
-                        .background(Color("Color1"))
-                        .cornerRadius(15)
-                }
-                .padding(.trailing)
-            }
-            
-            ScrollView(.vertical, showsIndicators: false) {
-                
-                VStack(spacing: 15){
-                    
-                    HStack(spacing: 15){
-                        
-                        Image("h1")
-                        
-                        VStack(alignment: .leading, spacing: 12) {
-                            
-                            Text("Xioami Ninebot")
-                                .fontWeight(.bold)
-                                .foregroundColor(.black)
-                            
-                            Text("Black scooter helmet")
-                                .foregroundColor(.gray)
-                        }
-                        
-                        Spacer(minLength: 0)
-                    }
-                    
-                    HStack(spacing: 15){
-                        
-                        Image("h2")
-                        
-                        VStack(alignment: .leading, spacing: 12) {
-                            
-                            Text("Apple Ninebot")
-                                .fontWeight(.bold)
-                                .foregroundColor(.black)
-                            
-                            Text("Urban cycle helmet")
-                                .foregroundColor(.gray)
-                        }
-                        
-                        Spacer(minLength: 0)
-                    }
-                }
-                .padding()
-            }
-        }
-    }
-}
-

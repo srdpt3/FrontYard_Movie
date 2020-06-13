@@ -6,6 +6,7 @@
 //  Copyright © 2020 Dustin yang. All rights reserved.
 //
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct MoviePosterCarouselView: View {
     
@@ -13,56 +14,68 @@ struct MoviePosterCarouselView: View {
     let movies: [Movie]
     
     var body: some View {
+        
+        
+        
         VStack(spacing: 0){
-            Text(
-            "hi")
-//
-//            if !self.grid.isEmpty{
-//
-//                ScrollView(.vertical, showsIndicators: false) {
-//
-//
-//                    VStack(spacing: 20){
-//                        ForEach(self.grid,id: \.self){i in
-//
-//                            HStack(spacing: 16){
-//                                ForEach(i...i+1,id:  \.self){j in
-//                                    VStack{
-//                                        if j != self.movies.count{
-//
-//                                            NavigationLink(destination: MovieDetailView(movieId: self.movies[j].id)) {
-//
-//                                                MoviePosterCard(movie: self.movies[j])
-//
-//
-//
-//                                            }
-//
-//
-//
-//                                        }
-//                                    }
-//                                }
-//
-//                                if i == self.grid.last! && self.movies.count % 2 != 0{
-//
-//                                    Spacer(minLength:  0)
-//                                }
-//                            }.padding(.horizontal, 12)
-//                        }
-//                    }
-//                }
-//
-//            }
-//
-        }
+            ScrollView(.vertical, showsIndicators: false) {
+                VStack(spacing: 20){
+                    ForEach(0..<movies.chunked(3).count){index in
+                        
+                        HStack(spacing: 8){
+                            ForEach(self.movies.chunked(3)[index]){i in
+                                
+                                NavigationLink(destination: MovieDetailView(movieId: i.id)) {
+                                    
+                                    MovieCard(movie: i)
+                                    
+                                    
+                                    
+                                }
+                                
+                                
+                            }
+                        }.padding(.horizontal, 12)
+                        
+                    }
+                }
+                
+            }
+            
+        }.padding()
         
     }
     
 }
 
-struct MoviePosterCarouselView_Previews: PreviewProvider {
-    static var previews: some View {
-        /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
+
+struct MovieNowPlayingCard: View {
+    
+    let movie: Movie
+    var body: some View {
+        
+        VStack {
+            AnimatedImage(url: self.movie.posterURL)
+                .resizable().frame(width: (UIScreen.main.bounds.width - 75) / 2, height: (UIScreen.main.bounds.height ) / 4.2).cornerRadius(20)
+            HStack {
+                
+                Text(movie.title).font(.footnote)
+            }
+            HStack {
+                if !movie.ratingText.isEmpty {
+                    Text(movie.ratingText).font(.footnote).foregroundColor(.yellow)
+                }
+                Text(movie.scoreText).fontWeight(.medium).foregroundColor(Color("Color2"))
+                
+            }
+            
+            
+            
+        } .padding(.all, 5)
+            .frame(width: (UIScreen.main.bounds.width - 60) / 2)
+            .background(Color("Color1"))
+            .cornerRadius(20)
+            .shadow(color: Color.black.opacity(0.1), radius: 5, x: 8, y: 8)
+            .shadow(color: Color.white.opacity(0.5), radius: 5, x: -8, y: -8)
     }
 }

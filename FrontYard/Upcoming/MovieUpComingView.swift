@@ -21,7 +21,7 @@ struct MovieUpComingView: View {
             VStack   {
                 //                GeometryReader{_ in
                 VStack(spacing: 10){
-
+                    
                     if self.upcomingState.movies != nil {
                         MainSubViewUpComing(title: "Up Coming", movies: self.upcomingState.movies!)
                     } else {
@@ -29,14 +29,7 @@ struct MovieUpComingView: View {
                             self.upcomingState.loadMovies(with: .topRated)
                         }
                     }
-                    //                        Spacer()
                 }
-                
-                
-                
-                
-                
-                //                }
                 
                 
                 
@@ -70,7 +63,7 @@ struct MainSubViewUpComing : View{
                                 
                                 NavigationLink(destination: MovieDetailView(movieId: city.id)) {
                                     
-                                    MovieUpComingCard(movie: city)
+                                    MovieCard(movie: city)
                                     
                                     
                                     
@@ -91,7 +84,7 @@ struct MainSubViewUpComing : View{
     }
 }
 
-struct MovieUpComingCard: View {
+struct MovieCard: View {
     let movie: Movie
     
     var body: some View {

@@ -18,21 +18,17 @@ struct SettingsView: View {
         ZStack {
             
             Form {
-                Section(header: Text("Feedback").foregroundColor(Color("Color2")).font(.title).bold()) {
+                Section(header: Text("Feedback").foregroundColor(Color("Color2")).font(.subheadline).bold()) {
                     SectionButton(image: "star.circle.fill", label: "Rate this app", isShowingMailView: $isShowingMailView)
-                    
-                    #if targetEnvironment(macCatalyst)
-                    EmptyView()
-                    #else
+
                     SectionButton(image: "envelope.circle.fill", label: "Send feedback", isShowingMailView: $isShowingMailView)
-                    #endif
                 }
                 
-                Section(header: Text("About this app").foregroundColor(Color("Color2")).font(.title).bold()) {
+                Section(header: Text("About this app").foregroundColor(Color("Color2")).font(.subheadline).bold()) {
                     Text("This app is designed to help search movies. Using the app, you can wstch trailers, read revies and get movie infmation all from within the app").font(.caption)
                 }
                 
-                Section(header: Text("Credit").foregroundColor(Color("Color2")).font(.title).bold()) {
+                Section(header: Text("Credit").foregroundColor(Color("Color2")).font(.subheadline).bold()) {
                     VStack(alignment: .leading, spacing: 10){
                         Text("SDWebImageSwiftUI  - SwiftUI image loading framework").font(.footnote)
                         Text("The Movie Database (TMDb) - https://developers.themoviedb.org/3").font(.footnote)
@@ -40,20 +36,11 @@ struct SettingsView: View {
                     
                     
                 }
-                Section(header: Text("Developer").foregroundColor(Color("Color2")).font(.title).bold()) {
+                Section(header: Text("Developer").foregroundColor(Color("Color2")).font(.subheadline).bold()) {
                     VStack(alignment: .leading, spacing: 10){
                         
                         Button("Dustin Yang  - Github page") {UIApplication.shared.open(URL(string: "https://github.com/srdpt3")!)}
-                        
-                        //
-                        //                        Text("Dustin Yang "  ).font(.footnote)
-                        //                        let link : [NSTextCheckingResult] = []
-                        //                        link[0] = "NSTextCheckingResult"
-                        //                        LinkColoredText(text: "https://github.com/srdpt3", links: link)
-                        //                                  .font(.body) // enforce here because the link tapping won't be right if it's different
-                        //                                  .overlay(LinkTapOverlay(text: "https://github.com/srdpt3", links: link))
-                        
-                        //                        AttributedText(NSAttributedString(string: "https://github.com/srdpt3"))
+
                     }
                     
                     
