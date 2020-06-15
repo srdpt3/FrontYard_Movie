@@ -13,6 +13,7 @@ class MovieListState: ObservableObject {
     @Published var isLoading: Bool = false
     @Published var error: NSError?
     var result: [Movie]?
+    var index = 1
     private let movieService: MovieService
     
     init(movieService: MovieService = MovieStore.shared) {
@@ -22,7 +23,17 @@ class MovieListState: ObservableObject {
     func loadMovies(with endpoint: MovieListEndpoint) {
         self.movies = nil
         self.isLoading = true
-        self.movieService.fetchMovies(from: endpoint,page: 6) { [weak self] (result) in
+        
+         if(endpoint == .nowPlaying ){
+            self.index = 2
+         }else if(endpoint == .upcoming ){
+            self.index = 2
+         }else{
+            self.index = 1
+        }
+        
+        
+        self.movieService.fetchMovies(from: endpoint,page: self.index) { [weak self] (result) in
             guard let self = self else { return }
             self.isLoading = false
             switch result {
@@ -34,23 +45,8 @@ class MovieListState: ObservableObject {
                 self.error = error as NSError
             }
         }
-        for index in 2...3 {
-            self.movieService.fetchMovies(from: endpoint,page: index) { [weak self] (result) in
-                guard let self = self else { return }
-                self.isLoading = false
-                switch result {
-                case .success(let response):
-                    if(response.results.count > 0 ){
-                        self.movies!+=response.results
-                        
-                    }
-                    
-                case .failure(let error):
-                    self.error = error as NSError
-                }
-            }
-        }
         
+
         
         
         

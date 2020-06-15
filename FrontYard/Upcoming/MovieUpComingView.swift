@@ -22,8 +22,11 @@ struct MovieUpComingView: View {
                 //                GeometryReader{_ in
                 VStack(spacing: 10){
                     
-                    if self.upcomingState.movies != nil {
+                    if self.upcomingState.movies != nil &&  self.upcomingState.movies!.count > 0 {
+                        
                         MainSubViewUpComing(title: "Up Coming", movies: self.upcomingState.movies!)
+                        
+                        
                     } else {
                         LoadingView(isLoading: self.upcomingState.isLoading, error: self.upcomingState.error) {
                             self.upcomingState.loadMovies(with: .topRated)

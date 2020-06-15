@@ -10,7 +10,7 @@ import SwiftUI
 
 struct MovieTopRatedView: View {
     //    @ObservedObject private var nowPlayingState = MovieListState()
-//    @ObservedObject private var upcomingState = MovieListState()
+    //    @ObservedObject private var upcomingState = MovieListState()
     @ObservedObject private var topRatedState = MovieListState()
     @ObservedObject private var popularState = MovieListState()
     init() {
@@ -23,23 +23,25 @@ struct MovieTopRatedView: View {
             VStack   {
                 GeometryReader{_ in
                     VStack(spacing: 5){
-
+                        
                         HStack{
-
+                            
                             Text("Top Rated").fontWeight(.heavy).font(.headline).foregroundColor(Color("Color2"))
                             Spacer()
-
+                            
                         }.padding(.leading, 12)
                         
                         if self.topRatedState.movies != nil {
                             MovieBackdropCarouselView(title: "Top Rated", movies: self.topRatedState.movies!)
+                            
+                            
                             
                         } else {
                             LoadingView(isLoading: self.topRatedState.isLoading, error: self.topRatedState.error) {
                                 self.topRatedState.loadMovies(with: .topRated)
                             }
                         }
-//                        Spacer()
+                        //                        Spacer()
                     }
                     
                     
@@ -48,13 +50,15 @@ struct MovieTopRatedView: View {
                     
                 }
                 //                .listRowInsets(EdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0))
-
+                
                 GeometryReader{_ in
                     VStack(spacing: 5){
-                 
                         
-                        if self.popularState.movies != nil {
+                        
+                        if self.popularState.movies != nil  {
                             MoviePopularCarouselView(title: "Popular", movies: self.popularState.movies!)
+                            
+                            
                             
                         } else {
                             LoadingView(isLoading: self.popularState.isLoading, error: self.popularState.error) {
@@ -69,7 +73,7 @@ struct MovieTopRatedView: View {
                     
                     
                 }
-
+                
                 
                 
                 
@@ -80,7 +84,7 @@ struct MovieTopRatedView: View {
         
         
     }
-
+    
     
 }
 

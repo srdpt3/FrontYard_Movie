@@ -26,7 +26,14 @@ struct Home : View {
     @State var index = 0
     @State var show = false
     @State private var isSettingsOpen = false
-
+    @EnvironmentObject var session: SessionStore
+    func listen() {
+        print("Listen")
+        session.listenAuthenticationState()
+    }
+//    func logout() {
+//        session.logout()
+//    }
     var body: some View{
         
         ZStack{
@@ -150,6 +157,33 @@ struct Home : View {
                         .cornerRadius(10)
                     }
                     
+                    
+                    Button(action: {
+                        
+                        self.index = 4
+//                        self.session.logout()
+                        withAnimation{
+                            
+                            self.show.toggle()
+                        }
+                        
+                    }) {
+                        
+                        HStack(spacing: 20){
+                            
+                            Image("My List").resizable().frame(width: 18, height: 18)
+                                .foregroundColor(self.index == 4 ? Color("Color2") : Color.white)
+                            
+                            
+                            Text("My List")
+                                .foregroundColor(self.index == 4 ? Color("Color2") : Color.white)
+                        }
+                        .padding(.vertical, 10)
+                        .padding(.horizontal,8)
+                        .background(self.index == 3 ? Color("Color2").opacity(0.2) : Color.clear)
+                        .cornerRadius(10)
+                    }
+                    
                     Divider()
                         .frame(width: 150, height: 1)
                         .background(Color.white)
@@ -158,7 +192,7 @@ struct Home : View {
                     
                     
                     Button(action: {
-                        self.index = 4
+                        self.index = 5
                         
                         withAnimation{
                             
@@ -173,36 +207,36 @@ struct Home : View {
                             
                             
                             Text("Info")
-                                .foregroundColor(self.index == 4 ? Color("Color2") : Color.white)
+                                .foregroundColor(self.index == 5 ? Color("Color2") : Color.white)
                         }
                         .padding(.vertical, 10)
                         .padding(.horizontal,8)
-                        .background(self.index == 4 ? Color("Color2").opacity(0.2) : Color.clear)
+                        .background(self.index == 5 ? Color("Color2").opacity(0.2) : Color.clear)
                         .cornerRadius(10)
                     }
-//
-//                    Button(action: {
-//
-//
-//                    }) {
-//
-//                        VStack(spacing: 25){
-//
-//                            //                            Image("out")
-//                            //                                .foregroundColor(Color.white)
-//
-//
-//                            Text("App version: 1.0.0")
-//                                .foregroundColor(Color.white)
-//
-//
-//                            Text("Developer: Dustin yang")
-//                                .foregroundColor(Color.white)
-//
-//                        }
-//                            //                        .padding(.vertical, 10)
-//                            .padding(.horizontal,8)
-//                    }
+                    //
+                    //                    Button(action: {
+                    //
+                    //
+                    //                    }) {
+                    //
+                    //                        VStack(spacing: 25){
+                    //
+                    //                            //                            Image("out")
+                    //                            //                                .foregroundColor(Color.white)
+                    //
+                    //
+                    //                            Text("App version: 1.0.0")
+                    //                                .foregroundColor(Color.white)
+                    //
+                    //
+                    //                            Text("Developer: Dustin yang")
+                    //                                .foregroundColor(Color.white)
+                    //
+                    //                        }
+                    //                            //                        .padding(.vertical, 10)
+                    //                            .padding(.horizontal,8)
+                    //                    }
                     //
                     Spacer(minLength: 0)
                 }
@@ -239,7 +273,8 @@ struct Home : View {
                     
                     // Changing Name Based On Index...
                     
-                    Text(self.index == 0 ? "Now Playing" : (self.index == 1 ? "Trending" : (self.index == 2 ? "Upcoming" : (self.index == 3 ? "Search Movies" : "Info"))))
+                    Text(self.index == 0 ? "Now Playing" : (self.index == 1 ? "Trending" : (self.index == 2 ? "Upcoming" :
+                        (self.index == 3 ? "Search Movies" :  (self.index == 4 ? "My List" : "Info")))))
                         .font(.title)
                         .foregroundColor(Color("Color2")).fontWeight(.bold)
                     
@@ -270,8 +305,20 @@ struct Home : View {
                             
                             MovieSearchView()
                         }
+                        else if self.index == 4{
+                            
+                            
+                            if(self.session.isLoggedIn){
+//                                MovieSearchView()
+Color.blue
+                            }else{
+                                Color.black
+                                
+                            }
+                            
+                        }
                         else{
-                             SettingsView(isSettingsOpen: self.$isSettingsOpen)
+                            SettingsView(isSettingsOpen: self.$isSettingsOpen)
                         }
                     }
                 }.background(Color("Color1"))
@@ -287,6 +334,6 @@ struct Home : View {
             
         }
         .background(Color("Color").edgesIgnoringSafeArea(.all))
-        .edgesIgnoringSafeArea(.all)
+        .edgesIgnoringSafeArea(.all).onAppear(perform: listen)
     }
 }

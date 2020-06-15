@@ -21,7 +21,7 @@ struct MovieListView: View {
             
             
             VStack{
-                if nowPlayingState.movies != nil {
+                if nowPlayingState.movies != nil &&  self.nowPlayingState.movies!.count > 0 {
                     MoviePosterCarouselView(title: "Now Playing", movies: nowPlayingState.movies!)
                     
                     

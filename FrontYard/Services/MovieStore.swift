@@ -37,7 +37,7 @@ class MovieStore: MovieService {
             return
         }
         self.loadURLAndDecode(url: url, params: [
-            "append_to_response": "videos,credits,recommendations,release_dates",
+            "append_to_response": "videos,credits",
             "language": "en-US",
 
         ], completion: completion)
@@ -54,9 +54,9 @@ class MovieStore: MovieService {
             return
         }
         self.loadURLAndDecode(url: url, params: [
-            "language": "ko-KOR",
+            "language": "en-US",
             "include_adult": "true",
-            "region": "KOR",
+//            "region": "KOR",
             "query": query
         ], completion: completion)
     }
