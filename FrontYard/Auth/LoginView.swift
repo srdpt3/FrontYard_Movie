@@ -22,9 +22,7 @@ struct LoginView: View {
             print("Error: \(errorMessage)")
             self.signinViewModel.showAlert = true
             self.signinViewModel.errorString = errorMessage
-            Alert(title: Text("Error"), message: Text(self.signinViewModel.errorString), dismissButton: .default(Text("OK")))
 
-//            self.clean()
 
         }
         
@@ -58,7 +56,16 @@ struct LoginView: View {
                 EmailTextField(email: $signinViewModel.email)
                 PasswordTextField(password: $signinViewModel.password)
                 SigninButton(action: signIn, label: TEXT_SIGN_IN).alert(isPresented: $signinViewModel.showAlert) {
-                    Alert(title: Text("Error"), message: Text(self.signinViewModel.errorString), dismissButton: .default(Text("OK")))
+                    Alert(title: Text("Error"), message: Text(self.signinViewModel.errorString), dismissButton: .default(Text("OK"), action: {
+                        self.showLoginView.toggle()
+
+                    }))
+
+                }.alert(isPresented: $signinViewModel.success){
+                    Alert(title: Text("GOOD"), message: Text(self.signinViewModel.errorString), dismissButton: .default(Text("OK"), action: {
+                                           self.showLoginView.toggle()
+
+                                       }))
                 }
                 Divider()
                 NavigationLink(destination: SignUpView()) {

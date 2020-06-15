@@ -6,6 +6,7 @@
 //  Copyright © 2020 Dustin yang. All rights reserved.
 //
 import SwiftUI
+import FirebaseAuth
 
 
 struct ContentView: View {
@@ -308,7 +309,7 @@ struct Home : View {
                         else if self.index == 4{
                             
                             
-                            if(self.session.isLoggedIn){
+                            if(Auth.auth().currentUser != nil){
 //                                MovieSearchView()
 Color.blue
                             }else{
@@ -334,6 +335,7 @@ Color.blue
             
         }
         .background(Color("Color").edgesIgnoringSafeArea(.all))
-        .edgesIgnoringSafeArea(.all).onAppear(perform: listen)
+        .edgesIgnoringSafeArea(.all)
+//        .onAppear(perform: listen)
     }
 }

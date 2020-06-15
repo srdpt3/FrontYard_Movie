@@ -21,12 +21,14 @@ class SigninViewModel: ObservableObject {
     
     @Published var showAlert: Bool = false
 
-    
+    @Published var success: Bool = false
+
     
     func signin(email: String, password: String, completed: @escaping(_ user: User) -> Void,  onError: @escaping(_ errorMessage: String) -> Void) {
         if !email.isEmpty && !password.isEmpty {
             AuthService.signInUser(email: email, password: password, onSuccess: completed, onError: onError)
             print("SigninViewModel  signin ")
+            success = true
         } else {
             showAlert = true
             errorString = "Please fill in all fields"
