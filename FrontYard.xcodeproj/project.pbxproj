@@ -221,16 +221,13 @@
 				116D6B112490584500244C83 /* Helper */,
 				1103D425248EDD330068C5A5 /* UIKit */,
 				112D702F249593B900017DFA /* Controller */,
-				1103D40D248ED6C40068C5A5 /* SearchBarView.swift */,
 				116D6B21249197EF00244C83 /* TopRatedView */,
 				116D6B22249197FE00244C83 /* NowPlaying */,
-				1103D41D248ED73B0068C5A5 /* MovieDetailView.swift */,
-				1103D41F248ED7890068C5A5 /* MovieSearchView.swift */,
+				11DBA8D82497B453005FA80F /* Search */,
 				112D702E2495939100017DFA /* Upcoming */,
 				116D6B14249075F900244C83 /* Services */,
-				112D702C2495349C00017DFA /* Settings.swift */,
+				11DBA8D92497B47C005FA80F /* Setting */,
 				11DBA8B62496C80D005FA80F /* Auth */,
-				11DBA8D62496E7CB005FA80F /* SessionStore.swift */,
 			);
 			path = FrontYard;
 			sourceTree = "<group>";
@@ -282,6 +279,7 @@
 		112D702F249593B900017DFA /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				1103D41D248ED73B0068C5A5 /* MovieDetailView.swift */,
 				1103D403248ED6570068C5A5 /* MovieDetailState.swift */,
 				1103D405248ED6640068C5A5 /* MovieListState.swift */,
 				1103D407248ED68F0068C5A5 /* MovieSearchState.swift */,
@@ -302,6 +300,7 @@
 		116D6B112490584500244C83 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				1103D40D248ED6C40068C5A5 /* SearchBarView.swift */,
 				1103D3FF248ED6300068C5A5 /* Util.swift */,
 				1103D41B248ED72A0068C5A5 /* LoadingView.swift */,
 				11DBA8C92496CCFC005FA80F /* Constants.swift */,
@@ -357,6 +356,7 @@
 		11DBA8B62496C80D005FA80F /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				11DBA8D62496E7CB005FA80F /* SessionStore.swift */,
 				11DBA8B22496C7FC005FA80F /* LoginView.swift */,
 				11DBA8B42496C806005FA80F /* SignUpView.swift */,
 				11DBA8B72496CBA4005FA80F /* SignupViewModel.swift */,
@@ -377,6 +377,22 @@
 				11DBA8C72496CCCA005FA80F /* PasswordTextField.swift */,
 			);
 			path = Component;
+			sourceTree = "<group>";
+		};
+		11DBA8D82497B453005FA80F /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				1103D41F248ED7890068C5A5 /* MovieSearchView.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		11DBA8D92497B47C005FA80F /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				112D702C2495349C00017DFA /* Settings.swift */,
+			);
+			path = Setting;
 			sourceTree = "<group>";
 		};
 		28E4E870B228A46A8444D220 /* Pods */ = {

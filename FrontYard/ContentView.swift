@@ -32,9 +32,9 @@ struct Home : View {
         print("Listen")
         session.listenAuthenticationState()
     }
-//    func logout() {
-//        session.logout()
-//    }
+    //    func logout() {
+    //        session.logout()
+    //    }
     var body: some View{
         
         ZStack{
@@ -162,7 +162,7 @@ struct Home : View {
                     Button(action: {
                         
                         self.index = 4
-//                        self.session.logout()
+                        //                        self.session.logout()
                         withAnimation{
                             
                             self.show.toggle()
@@ -310,8 +310,7 @@ struct Home : View {
                             
                             
                             if(Auth.auth().currentUser != nil){
-//                                MovieSearchView()
-Color.blue
+                                 MovieSearchView()
                             }else{
                                 Color.black
                                 
@@ -336,6 +335,6 @@ Color.blue
         }
         .background(Color("Color").edgesIgnoringSafeArea(.all))
         .edgesIgnoringSafeArea(.all)
-//        .onAppear(perform: listen)
+        //        .onAppear(perform: listen)
     }
 }
