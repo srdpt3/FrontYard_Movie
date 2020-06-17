@@ -59,6 +59,8 @@
 		11DBA8D22496CDD0005FA80F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DBA8D12496CDD0005FA80F /* Extensions.swift */; };
 		11DBA8D52496E4AD005FA80F /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DBA8D42496E4AD005FA80F /* ImagePicker.swift */; };
 		11DBA8D72496E7CB005FA80F /* SessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DBA8D62496E7CB005FA80F /* SessionStore.swift */; };
+		11DBA8DB2499B6B5005FA80F /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DBA8DA2499B6B4005FA80F /* ProfileView.swift */; };
+		11DBA8DD2499B7AD005FA80F /* ProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DBA8DC2499B7AD005FA80F /* ProfileHeader.swift */; };
 		19BD00BB6F873016F9F6AF8E /* Pods_FrontYard_FrontYardUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 772632FA9AE39D5D6949AE04 /* Pods_FrontYard_FrontYardUITests.framework */; };
 		78D2F32E444677659CC66B44 /* Pods_FrontYard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48E6FB41EF20CC68B8EB58C8 /* Pods_FrontYard.framework */; };
 		EBF533A280FAB209E687C605 /* Pods_FrontYardTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F019536F085AABD71B9F604 /* Pods_FrontYardTests.framework */; };
@@ -144,6 +146,8 @@
 		11DBA8D12496CDD0005FA80F /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		11DBA8D42496E4AD005FA80F /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		11DBA8D62496E7CB005FA80F /* SessionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStore.swift; sourceTree = "<group>"; };
+		11DBA8DA2499B6B4005FA80F /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		11DBA8DC2499B7AD005FA80F /* ProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeader.swift; sourceTree = "<group>"; };
 		1F019536F085AABD71B9F604 /* Pods_FrontYardTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FrontYardTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48E6FB41EF20CC68B8EB58C8 /* Pods_FrontYard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FrontYard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CBE9A48815EECF77AA0BA2A /* Pods-FrontYard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FrontYard.debug.xcconfig"; path = "Target Support Files/Pods-FrontYard/Pods-FrontYard.debug.xcconfig"; sourceTree = "<group>"; };
@@ -228,6 +232,8 @@
 				116D6B14249075F900244C83 /* Services */,
 				11DBA8D92497B47C005FA80F /* Setting */,
 				11DBA8B62496C80D005FA80F /* Auth */,
+				11DBA8DA2499B6B4005FA80F /* ProfileView.swift */,
+				11DBA8DC2499B7AD005FA80F /* ProfileHeader.swift */,
 			);
 			path = FrontYard;
 			sourceTree = "<group>";
@@ -662,9 +668,11 @@
 				112D702D2495349D00017DFA /* Settings.swift in Sources */,
 				11DBA8B32496C7FC005FA80F /* LoginView.swift in Sources */,
 				116D6B1324906DF600244C83 /* MovieTopRatedView.swift in Sources */,
+				11DBA8DB2499B6B5005FA80F /* ProfileView.swift in Sources */,
 				1103D402248ED6460068C5A5 /* ImageLoader.swift in Sources */,
 				11DBA8BA2496CBB6005FA80F /* SigninViewModel.swift in Sources */,
 				1103D3D0248ED5570068C5A5 /* FrontYard.xcdatamodeld in Sources */,
+				11DBA8DD2499B7AD005FA80F /* ProfileHeader.swift in Sources */,
 				1103D408248ED68F0068C5A5 /* MovieSearchState.swift in Sources */,
 				1103D422248ED79C0068C5A5 /* MovieService.swift in Sources */,
 				1103D400248ED6300068C5A5 /* Util.swift in Sources */,

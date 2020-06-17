@@ -310,7 +310,7 @@ struct Home : View {
                             
                             
                             if(Auth.auth().currentUser != nil){
-                                 MovieSearchView()
+                                 ProfileView()
                             }else{
                                 Color.black
                                 
@@ -335,6 +335,6 @@ struct Home : View {
         }
         .background(Color("Color").edgesIgnoringSafeArea(.all))
         .edgesIgnoringSafeArea(.all)
-        //        .onAppear(perform: listen)
+        .onAppear(perform: listen)
     }
 }

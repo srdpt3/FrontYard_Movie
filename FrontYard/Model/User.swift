@@ -8,12 +8,33 @@
 import Foundation
 
 struct User: Encodable, Decodable {
-    var uid: String
+    var uid : String
     var email: String
     var profileImageUrl: String
     var username: String
     var bio: String
-    var keywords: [String]
+//    var keywords: [String]
+    
+    
+    
+init(uid: String, email: String, profileImageUrl: String, username: String, bio: String) {
+    self.uid = uid
+    self.email = email
+    self.profileImageUrl = profileImageUrl
+    self.username = username
+    self.bio = bio
+
+}
+    init(_dictionary: NSDictionary) {
+        uid = _dictionary["uid"] as! String
+        email = _dictionary["email"] as! String
+        profileImageUrl = _dictionary["profileImageUrl"] as! String
+        username = _dictionary["username"] as! String
+        bio = _dictionary["bio"] as! String
+
+//        keywords = _dictionary["bio"] as! String
+
+    }
 //
 //    static func convertDictToUserStruct(dict: [String: Any]) -> User {
 //        let bio = dict["bio"] as! String
