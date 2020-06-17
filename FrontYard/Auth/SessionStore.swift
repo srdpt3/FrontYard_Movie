@@ -25,7 +25,7 @@ class SessionStore: ObservableObject {
                 
                 
                 
-                Ref.FIRESTORE_DOCUMENT_USERID(userId:  "Lb3HItJxhqRBxnGZEaBVr4bMIlr2").getDocument { (snapshot, error) in
+                Ref.FIRESTORE_DOCUMENT_USERID(userId:  user.uid).getDocument { (snapshot, error) in
 
                     guard let snapshot = snapshot else { return }
 

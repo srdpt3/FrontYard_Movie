@@ -13,16 +13,18 @@ struct User: Encodable, Decodable {
     var profileImageUrl: String
     var username: String
     var bio: String
-//    var keywords: [String]
+    var keywords: [String]
     
     
     
-init(uid: String, email: String, profileImageUrl: String, username: String, bio: String) {
+init(uid: String, email: String, profileImageUrl: String, username: String, bio: String,keywords: [String]) {
     self.uid = uid
     self.email = email
     self.profileImageUrl = profileImageUrl
     self.username = username
     self.bio = bio
+    self.keywords = keywords
+
 
 }
     init(_dictionary: NSDictionary) {
@@ -31,8 +33,7 @@ init(uid: String, email: String, profileImageUrl: String, username: String, bio:
         profileImageUrl = _dictionary["profileImageUrl"] as! String
         username = _dictionary["username"] as! String
         bio = _dictionary["bio"] as! String
-
-//        keywords = _dictionary["bio"] as! String
+        keywords = _dictionary["keywords"] as! [String]
 
     }
 //
