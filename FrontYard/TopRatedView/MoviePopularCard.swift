@@ -15,7 +15,7 @@ struct MoviePopularCard: View {
         var body: some View {
             VStack {
                 AnimatedImage(url: self.movie.posterURL)
-                    .resizable().frame(width :  (UIScreen.main.bounds.width ) / 1.7, height:  (UIScreen.main.bounds.height ) / 4.3).cornerRadius(20).aspectRatio(contentMode: .fill)
+                    .resizable().frame(width :  (UIScreen.main.bounds.width ) / 1.8, height:  (UIScreen.main.bounds.height ) / 4.3).cornerRadius(20).aspectRatio(contentMode: .fit)
                 
                                   Text(movie.title)
                                     .font(.callout)
@@ -31,7 +31,7 @@ struct MoviePopularCard: View {
                 
             } .padding(.horizontal, 5)
                 // half screen - spacing - two side paddings = 60
-                .frame(width: (UIScreen.main.bounds.width ) / 1.5, height: (UIScreen.main.bounds.height ) / 3.2)
+                .frame(width: (UIScreen.main.bounds.width ) / 1.6, height: (UIScreen.main.bounds.height ) / 3.2)
                 .background(Color("Color1"))
                 .cornerRadius(20)
                 .shadow(color: Color.black.opacity(0.1), radius: 5, x: 8, y: 8)

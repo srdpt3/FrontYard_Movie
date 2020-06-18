@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct Photo: Identifiable {
     let id = UUID()
@@ -16,6 +17,13 @@ struct Photo: Identifiable {
 struct ProfileView: View {
     
     @EnvironmentObject var session: SessionStore
+    @ObservedObject var profileViewModel = ProfileViewModel()
+    
+    
+    init() {
+        self.profileViewModel.loadUserPosts(userId: Auth.auth().currentUser!.uid)
+    }
+    
     var photoArray = [Photo(photo: "photo"), Photo(photo: "photo1"), Photo(photo: "photo2"), Photo(photo: "photo3"), Photo(photo: "photo4"), Photo(photo: "photo5"), Photo(photo: "photo6"), Photo(photo: "photo7"),  Photo(photo: "photo8"), Photo(photo: "photo9")]
     
     
@@ -24,19 +32,22 @@ struct ProfileView: View {
     var body: some View {
         let splitted = photoArray.splited(into: 3)
         return
-   
+            NavigationView {
+                
                 ScrollView {
                     VStack(alignment: .leading, spacing: 15) {
-                        ProfileHeader(user: self.session.userSession!)
-//                        EditProfileButton()
-                        ProfileInformation(user: self.session.userSession!)
                         
-                        Picker(selection: $selection, label: Text("Grid or Table")) {
-                            ForEach(0..<displayState.count) { index in
-                                Image(systemName: self.displayState[index]).tag(index)
-                                
-                            }
-                        }.pickerStyle(SegmentedPickerStyle()).padding(.leading, 20).padding(.trailing, 20)
+                        ProfileHeader(user: self.session.userSession,followingCount: $profileViewModel.followingCountState, followersCount: $profileViewModel.followersCountState)
+                        
+                        //                        EditProfileButton()
+                        ProfileInformation(user: self.session.userSession!)
+                        //
+                        //                        Picker(selection: $selection, label: Text("Grid or Table")) {
+                        //                            ForEach(0..<displayState.count) { index in
+                        //                                Image(systemName: self.displayState[index]).tag(index)
+                        //
+                        //                            }
+                        //                        }.pickerStyle(SegmentedPickerStyle()).padding(.leading, 20).padding(.trailing, 20)
                         VStack(alignment: .leading, spacing: 1) {
                             // rows
                             ForEach(0..<splitted.count) { index in
@@ -53,26 +64,28 @@ struct ProfileView: View {
                         
                     }.padding(.top, 20)
                     
+                }.navigationBarTitle( Text(self.session.userSession!.username).bold(), displayMode: .inline).navigationBarItems(leading:
+                    Button(action: {}) {
+                        NavigationLink(destination: UsersView()) {
+                            Image(systemName: "person.fill").imageScale(Image.Scale.large).foregroundColor(.black)
+                        }
+                    }
+                    
+                    
+                    //                    ,trailing:
+                    //                   Button(action: {
+                    //                       self.session.logout()
+                    //                       
+                    //                   }) {
+                    //                       
+                    //                       Image(systemName: "arrow.right.circle.fill").imageScale(Image.Scale.large).foregroundColor(.black)
+                    //                       
+                    //                   }
+                    
+                )  .onAppear {
+                    self.profileViewModel.loadUserPosts(userId: Auth.auth().currentUser!.uid)
                 }
-                
-                //                 .navigationBarTitle(Text("Profile"), displayMode: .inline)
-                //                    .navigationBarItems(leading:
-                //
-                //
-                //                    Button(action: {}) {
-                //                    NavigationLink(destination: UsersView()) {
-                //                        Image(systemName: "person.fill").imageScale(Image.Scale.large).foregroundColor(.black)
-                //                    }
-                //                },trailing:
-                //                Button(action: {
-                //                    self.session.logout()
-                //
-                //                }) {
-                //
-                //                    Image(systemName: "arrow.right.circle.fill").imageScale(Image.Scale.large).foregroundColor(.black)
-                //
-                //                } )
-  
+        }
         
         
         
@@ -105,8 +118,8 @@ struct ProfileInformation: View {
     var user: User
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
-            Text(user.username).bold()
-        }.padding(.leading, 20)
+            Text("\(user.username) 's favorite list").bold()
+        }.padding(.leading, 10)
     }
 }
 
@@ -145,7 +158,7 @@ struct ProfileInformation: View {
 
 
 func saveUserLocally(mUserDictionary: NSDictionary) {
-
+    
     UserDefaults.standard.set(mUserDictionary, forKey: "currentUser")
     UserDefaults.standard.synchronize()
 }

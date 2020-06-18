@@ -10,24 +10,28 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct ProfileHeader: View {
-   var user: User
+    
+    var user: User?
+//    var postCount: Int
+    @Binding var followingCount: Int
+    @Binding var followersCount: Int
     var body: some View {
         HStack {
             
 //
-            AnimatedImage(url: URL(string: user.profileImageUrl)).resizable().frame(width: 80, height: 80).padding(.leading, 20).aspectRatio(contentMode: .fill) .clipShape(Circle())
+            AnimatedImage(url: URL(string: user!.profileImageUrl)).resizable().frame(width: 80, height: 80).aspectRatio(contentMode: .fill) .clipShape(Circle()).padding(.leading, 5)
          
             Spacer()
             VStack {
-                Text("50").font(.headline)
-                Text("asdfa").font(.subheadline)
+                Text("10").font(.headline)
+                Text("movies").font(.subheadline)
             }.padding(10)
             VStack {
-                Text("2").font(.headline)
+                Text("\(followersCount)").font(.headline)
                 Text("Followers").font(.subheadline)
             }.padding(10)
             VStack {
-                Text("5").font(.headline)
+                Text("\(followingCount)").font(.headline)
                 Text("Following").font(.subheadline)
             }.padding(10)
             Spacer()

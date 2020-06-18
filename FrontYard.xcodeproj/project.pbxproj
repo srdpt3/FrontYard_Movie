@@ -61,6 +61,12 @@
 		11DBA8D72496E7CB005FA80F /* SessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DBA8D62496E7CB005FA80F /* SessionStore.swift */; };
 		11DBA8DB2499B6B5005FA80F /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DBA8DA2499B6B4005FA80F /* ProfileView.swift */; };
 		11DBA8DD2499B7AD005FA80F /* ProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DBA8DC2499B7AD005FA80F /* ProfileHeader.swift */; };
+		11DBA8DF249A7085005FA80F /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DBA8DE249A7084005FA80F /* UserProfileView.swift */; };
+		11DBA8E1249A7182005FA80F /* UsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DBA8E0249A7182005FA80F /* UsersViewModel.swift */; };
+		11DBA8E3249A7220005FA80F /* UsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DBA8E2249A7220005FA80F /* UsersView.swift */; };
+		11DBA8E5249A7291005FA80F /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DBA8E4249A7291005FA80F /* SearchBar.swift */; };
+		11DBA8E7249AE9DD005FA80F /* FollowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DBA8E6249AE9DD005FA80F /* FollowViewModel.swift */; };
+		11DBA8E9249AEA99005FA80F /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DBA8E8249AEA99005FA80F /* ProfileViewModel.swift */; };
 		19BD00BB6F873016F9F6AF8E /* Pods_FrontYard_FrontYardUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 772632FA9AE39D5D6949AE04 /* Pods_FrontYard_FrontYardUITests.framework */; };
 		78D2F32E444677659CC66B44 /* Pods_FrontYard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48E6FB41EF20CC68B8EB58C8 /* Pods_FrontYard.framework */; };
 		EBF533A280FAB209E687C605 /* Pods_FrontYardTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F019536F085AABD71B9F604 /* Pods_FrontYardTests.framework */; };
@@ -148,6 +154,12 @@
 		11DBA8D62496E7CB005FA80F /* SessionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStore.swift; sourceTree = "<group>"; };
 		11DBA8DA2499B6B4005FA80F /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		11DBA8DC2499B7AD005FA80F /* ProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeader.swift; sourceTree = "<group>"; };
+		11DBA8DE249A7084005FA80F /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
+		11DBA8E0249A7182005FA80F /* UsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewModel.swift; sourceTree = "<group>"; };
+		11DBA8E2249A7220005FA80F /* UsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersView.swift; sourceTree = "<group>"; };
+		11DBA8E4249A7291005FA80F /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		11DBA8E6249AE9DD005FA80F /* FollowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowViewModel.swift; sourceTree = "<group>"; };
+		11DBA8E8249AEA99005FA80F /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		1F019536F085AABD71B9F604 /* Pods_FrontYardTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FrontYardTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48E6FB41EF20CC68B8EB58C8 /* Pods_FrontYard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FrontYard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CBE9A48815EECF77AA0BA2A /* Pods-FrontYard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FrontYard.debug.xcconfig"; path = "Target Support Files/Pods-FrontYard/Pods-FrontYard.debug.xcconfig"; sourceTree = "<group>"; };
@@ -232,8 +244,7 @@
 				116D6B14249075F900244C83 /* Services */,
 				11DBA8D92497B47C005FA80F /* Setting */,
 				11DBA8B62496C80D005FA80F /* Auth */,
-				11DBA8DA2499B6B4005FA80F /* ProfileView.swift */,
-				11DBA8DC2499B7AD005FA80F /* ProfileHeader.swift */,
+				11DBA8EA249AFEFC005FA80F /* MyList */,
 			);
 			path = FrontYard;
 			sourceTree = "<group>";
@@ -299,6 +310,7 @@
 				116D6B1B24907B6900244C83 /* Movie+Stub.swift */,
 				1103D3FD248ED6120068C5A5 /* Movie.swift */,
 				11DBA8CB2496CD26005FA80F /* User.swift */,
+				11DBA8E0249A7182005FA80F /* UsersViewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -313,6 +325,7 @@
 				11DBA8CD2496CD53005FA80F /* Modifier.swift */,
 				11DBA8D12496CDD0005FA80F /* Extensions.swift */,
 				11DBA8D42496E4AD005FA80F /* ImagePicker.swift */,
+				11DBA8E4249A7291005FA80F /* SearchBar.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -399,6 +412,19 @@
 				112D702C2495349C00017DFA /* Settings.swift */,
 			);
 			path = Setting;
+			sourceTree = "<group>";
+		};
+		11DBA8EA249AFEFC005FA80F /* MyList */ = {
+			isa = PBXGroup;
+			children = (
+				11DBA8DA2499B6B4005FA80F /* ProfileView.swift */,
+				11DBA8DE249A7084005FA80F /* UserProfileView.swift */,
+				11DBA8DC2499B7AD005FA80F /* ProfileHeader.swift */,
+				11DBA8E2249A7220005FA80F /* UsersView.swift */,
+				11DBA8E6249AE9DD005FA80F /* FollowViewModel.swift */,
+				11DBA8E8249AEA99005FA80F /* ProfileViewModel.swift */,
+			);
+			path = MyList;
 			sourceTree = "<group>";
 		};
 		28E4E870B228A46A8444D220 /* Pods */ = {
@@ -664,6 +690,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11DBA8DF249A7085005FA80F /* UserProfileView.swift in Sources */,
 				11DBA8D72496E7CB005FA80F /* SessionStore.swift in Sources */,
 				112D702D2495349D00017DFA /* Settings.swift in Sources */,
 				11DBA8B32496C7FC005FA80F /* LoginView.swift in Sources */,
@@ -671,17 +698,21 @@
 				11DBA8DB2499B6B5005FA80F /* ProfileView.swift in Sources */,
 				1103D402248ED6460068C5A5 /* ImageLoader.swift in Sources */,
 				11DBA8BA2496CBB6005FA80F /* SigninViewModel.swift in Sources */,
+				11DBA8E3249A7220005FA80F /* UsersView.swift in Sources */,
 				1103D3D0248ED5570068C5A5 /* FrontYard.xcdatamodeld in Sources */,
 				11DBA8DD2499B7AD005FA80F /* ProfileHeader.swift in Sources */,
 				1103D408248ED68F0068C5A5 /* MovieSearchState.swift in Sources */,
 				1103D422248ED79C0068C5A5 /* MovieService.swift in Sources */,
+				11DBA8E5249A7291005FA80F /* SearchBar.swift in Sources */,
 				1103D400248ED6300068C5A5 /* Util.swift in Sources */,
 				1103D40C248ED6B30068C5A5 /* SafariView.swift in Sources */,
 				116D6B282491AB4400244C83 /* MovieUpComingView.swift in Sources */,
 				1103D41E248ED73B0068C5A5 /* MovieDetailView.swift in Sources */,
 				11DBA8D52496E4AD005FA80F /* ImagePicker.swift in Sources */,
 				1103D418248ED70F0068C5A5 /* MoviePosterCarouselView.swift in Sources */,
+				11DBA8E7249AE9DD005FA80F /* FollowViewModel.swift in Sources */,
 				11DBA8B82496CBA5005FA80F /* SignupViewModel.swift in Sources */,
+				11DBA8E1249A7182005FA80F /* UsersViewModel.swift in Sources */,
 				11DBA8C22496CCA0005FA80F /* SignupText.swift in Sources */,
 				11DBA8CA2496CCFC005FA80F /* Constants.swift in Sources */,
 				1103D3CB248ED5570068C5A5 /* AppDelegate.swift in Sources */,
@@ -689,6 +720,7 @@
 				11DBA8CC2496CD26005FA80F /* User.swift in Sources */,
 				116D6B1E2491367F00244C83 /* MoviePopularCarouselView.swift in Sources */,
 				11DBA8CE2496CD53005FA80F /* Modifier.swift in Sources */,
+				11DBA8E9249AEA99005FA80F /* ProfileViewModel.swift in Sources */,
 				1103D40A248ED6A40068C5A5 /* ActivityIndicatorView.swift in Sources */,
 				11DBA8B52496C806005FA80F /* SignUpView.swift in Sources */,
 				116D6B202491550F00244C83 /* MoviePopularCard.swift in Sources */,

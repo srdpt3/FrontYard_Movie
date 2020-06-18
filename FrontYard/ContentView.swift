@@ -93,7 +93,7 @@ struct Home : View {
                         
                         HStack(spacing: 20){
                             
-                            Image("heart").resizable().frame(width: 18, height: 18)
+                            Image("popcorn").resizable().frame(width: 18, height: 18)
                                 .foregroundColor(self.index == 1 ? Color("Color2") : Color.white)
                             
                             
@@ -172,7 +172,7 @@ struct Home : View {
                         
                         HStack(spacing: 20){
                             
-                            Image("My List").resizable().frame(width: 18, height: 18)
+                            Image("heart").resizable().frame(width: 18, height: 18)
                                 .foregroundColor(self.index == 4 ? Color("Color2") : Color.white)
                             
                             
@@ -181,7 +181,7 @@ struct Home : View {
                         }
                         .padding(.vertical, 10)
                         .padding(.horizontal,8)
-                        .background(self.index == 3 ? Color("Color2").opacity(0.2) : Color.clear)
+                        .background(self.index == 4 ? Color("Color2").opacity(0.2) : Color.clear)
                         .cornerRadius(10)
                     }
                     
@@ -207,7 +207,7 @@ struct Home : View {
                                 .foregroundColor(Color.white)
                             
                             
-                            Text("Info")
+                            Text("Setting")
                                 .foregroundColor(self.index == 5 ? Color("Color2") : Color.white)
                         }
                         .padding(.vertical, 10)
@@ -275,11 +275,30 @@ struct Home : View {
                     // Changing Name Based On Index...
                     
                     Text(self.index == 0 ? "Now Playing" : (self.index == 1 ? "Trending" : (self.index == 2 ? "Upcoming" :
-                        (self.index == 3 ? "Search Movies" :  (self.index == 4 ? "My List" : "Info")))))
+                        (self.index == 3 ? "Search Movies" :  (self.index == 4 ? "My List" : "Setting")))))
                         .font(.title)
                         .foregroundColor(Color("Color2")).fontWeight(.bold)
                     
                     Spacer(minLength: 0)
+                    
+//                    
+//                       Button(action: {}) {
+//                           NavigationLink(destination: UsersView()) {
+//                               Image(systemName: "person.fill").imageScale(Image.Scale.large).foregroundColor(.black)
+//                           }
+//                       }
+//                        
+//                        
+//                        
+//                       Button(action: {
+//                           self.session.logout()
+//                           
+//                       }) {
+//                           
+//                           Image(systemName: "arrow.right.circle.fill").imageScale(Image.Scale.large).foregroundColor(.black)
+//                           
+//                       }
+                    
                 }
                 .padding(.top,UIApplication.shared.windows.first?.safeAreaInsets.top)
                 .padding().frame( height: 100)
