@@ -47,21 +47,21 @@ class UserApi {
         }
     }
     
-//    func loadPosts(userId: String, onSuccess: @escaping(_ posts: [Post]) -> Void) {
-//         Ref.FIRESTORE_MY_POSTS_DOCUMENT_USERID(userId: userId).collection("userPosts").getDocuments { (snapshot, error) in
-//             
-//             guard let snap = snapshot else {
-//                 print("Error fetching data")
-//                 return
-//             }
-//             var posts = [Post]()
-//             for document in snap.documents {
-//                 let dict = document.data()
-//                 guard let decoderPost = try? Post.init(fromDictionary: dict) else {return}
-//
-//                 posts.append(decoderPost)
-//             }
-//             onSuccess(posts)
-//         }
-//     }
+    func loadPosts(userId: String, onSuccess: @escaping(_ posts: [MyList]) -> Void) {
+         Ref.FIRESTORE_GET_MYLIST_USERID(userId: userId).getDocuments { (snapshot, error) in
+             
+             guard let snap = snapshot else {
+                 print("Error fetching data")
+                 return
+             }
+             var posts = [MyList]()
+             for document in snap.documents {
+                 let dict = document.data()
+                 guard let decoderPost = try? MyList.init(fromDictionary: dict) else {return}
+
+                 posts.append(decoderPost)
+             }
+             onSuccess(posts)
+         }
+     }
 }

@@ -67,6 +67,9 @@
 		11DBA8E5249A7291005FA80F /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DBA8E4249A7291005FA80F /* SearchBar.swift */; };
 		11DBA8E7249AE9DD005FA80F /* FollowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DBA8E6249AE9DD005FA80F /* FollowViewModel.swift */; };
 		11DBA8E9249AEA99005FA80F /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DBA8E8249AEA99005FA80F /* ProfileViewModel.swift */; };
+		11DBA8EE249BFD14005FA80F /* MyMovieListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DBA8ED249BFD14005FA80F /* MyMovieListModel.swift */; };
+		11DBA8F0249BFFA4005FA80F /* myList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DBA8EF249BFFA4005FA80F /* myList.swift */; };
+		11DBA8F2249C157D005FA80F /* GridPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DBA8F1249C157D005FA80F /* GridPost.swift */; };
 		19BD00BB6F873016F9F6AF8E /* Pods_FrontYard_FrontYardUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 772632FA9AE39D5D6949AE04 /* Pods_FrontYard_FrontYardUITests.framework */; };
 		78D2F32E444677659CC66B44 /* Pods_FrontYard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48E6FB41EF20CC68B8EB58C8 /* Pods_FrontYard.framework */; };
 		EBF533A280FAB209E687C605 /* Pods_FrontYardTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F019536F085AABD71B9F604 /* Pods_FrontYardTests.framework */; };
@@ -160,6 +163,9 @@
 		11DBA8E4249A7291005FA80F /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		11DBA8E6249AE9DD005FA80F /* FollowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowViewModel.swift; sourceTree = "<group>"; };
 		11DBA8E8249AEA99005FA80F /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		11DBA8ED249BFD14005FA80F /* MyMovieListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMovieListModel.swift; sourceTree = "<group>"; };
+		11DBA8EF249BFFA4005FA80F /* myList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myList.swift; sourceTree = "<group>"; };
+		11DBA8F1249C157D005FA80F /* GridPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridPost.swift; sourceTree = "<group>"; };
 		1F019536F085AABD71B9F604 /* Pods_FrontYardTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FrontYardTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48E6FB41EF20CC68B8EB58C8 /* Pods_FrontYard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FrontYard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CBE9A48815EECF77AA0BA2A /* Pods-FrontYard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FrontYard.debug.xcconfig"; path = "Target Support Files/Pods-FrontYard/Pods-FrontYard.debug.xcconfig"; sourceTree = "<group>"; };
@@ -309,6 +315,7 @@
 			children = (
 				116D6B1B24907B6900244C83 /* Movie+Stub.swift */,
 				1103D3FD248ED6120068C5A5 /* Movie.swift */,
+				11DBA8EF249BFFA4005FA80F /* myList.swift */,
 				11DBA8CB2496CD26005FA80F /* User.swift */,
 				11DBA8E0249A7182005FA80F /* UsersViewModel.swift */,
 			);
@@ -423,6 +430,8 @@
 				11DBA8E2249A7220005FA80F /* UsersView.swift */,
 				11DBA8E6249AE9DD005FA80F /* FollowViewModel.swift */,
 				11DBA8E8249AEA99005FA80F /* ProfileViewModel.swift */,
+				11DBA8ED249BFD14005FA80F /* MyMovieListModel.swift */,
+				11DBA8F1249C157D005FA80F /* GridPost.swift */,
 			);
 			path = MyList;
 			sourceTree = "<group>";
@@ -731,7 +740,10 @@
 				11DBA8C42496CCAE005FA80F /* EmailTextField.swift in Sources */,
 				1103D41C248ED72A0068C5A5 /* LoadingView.swift in Sources */,
 				1103D424248ED7AC0068C5A5 /* MovieStore.swift in Sources */,
+				11DBA8F0249BFFA4005FA80F /* myList.swift in Sources */,
+				11DBA8F2249C157D005FA80F /* GridPost.swift in Sources */,
 				11DBA8D22496CDD0005FA80F /* Extensions.swift in Sources */,
+				11DBA8EE249BFD14005FA80F /* MyMovieListModel.swift in Sources */,
 				116D6B1C24907B6900244C83 /* Movie+Stub.swift in Sources */,
 				1103D420248ED7890068C5A5 /* MovieSearchView.swift in Sources */,
 				11DBA8C02496CC90005FA80F /* SignupButton.swift in Sources */,
@@ -919,7 +931,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.7;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = movie.FrontYard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -943,7 +955,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.7;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = movie.FrontYard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

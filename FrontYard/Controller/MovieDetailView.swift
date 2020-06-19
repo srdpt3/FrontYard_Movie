@@ -7,12 +7,13 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct MovieDetailView: View {
     
     let movieId: Int
     @ObservedObject private var movieDetailState = MovieDetailState()
-    
+
     var body: some View {
         ZStack {
             LoadingView(isLoading: self.movieDetailState.isLoading, error: self.movieDetailState.error) {
@@ -32,10 +33,23 @@ struct MovieDetailView: View {
 }
 
 struct MovieDetailListView: View {
-    
-    let movie: Movie
+    @ObservedObject private var myMovieListModel = MyMovieListModel()
+
+    var movie: Movie
     @State private var selectedTrailer: MovieVideo?
     let imageLoader = ImageLoader()
+    var color : Int = 0
+    
+    
+    
+    
+    
+    
+    func addToMyList(){
+        
+
+        self.myMovieListModel.addToMyList(userId: Auth.auth().currentUser!.uid, movieId: self.movie.id  , imageURL: self.movie.posterURL.absoluteString )
+    }
     
     var body: some View {
         
@@ -56,7 +70,18 @@ struct MovieDetailListView: View {
                     Text(movie.ratingText).foregroundColor(.yellow)
                 }
                 Text(movie.scoreText)
+                
+                Spacer()
+                Button(action: addToMyList) {
+            
+                    Image("heart")
+                        .renderingMode(.original)
+                        .padding()
+                }.buttonStyle(PlainButtonStyle())
+                .background(self.color == 0 ? Color.yellow : Color.orange)
+                .clipShape(Circle())
             }
+
             
             Divider()
             
@@ -130,6 +155,8 @@ struct MovieDetailListView: View {
             SafariView(url: trailer.youtubeURL!)
         }.padding(.bottom, 80)
     }
+    
+
 }
 
 struct MovieDetailImage: View {

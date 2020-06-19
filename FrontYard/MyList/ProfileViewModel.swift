@@ -10,12 +10,12 @@ import Foundation
 import SwiftUI
 import FirebaseAuth
 class ProfileViewModel: ObservableObject {
-//    @Published var posts: [Post] = []
+    @Published var posts: [MyList] = []
     @Published var isLoading = false
     @Published var followersCountState = 0
     @Published var followingCountState = 0
 
-//    var splitted: [[Post]] = []
+    var splitted: [[MyList]] = []
     
     
     @Published var isFollowing = false
@@ -32,11 +32,11 @@ class ProfileViewModel: ObservableObject {
     
     func loadUserPosts(userId: String) {
         isLoading = true
-//        UserApi().User.loadPosts(userId: userId) { (posts) in
-//            self.isLoading = false
-//            self.posts = posts
-//            self.splitted = self.posts.splited(into: 3)
-//        }
+        UserApi().loadPosts(userId: userId) { (posts) in
+            self.isLoading = false
+            self.posts = posts
+            self.splitted = self.posts.splited(into: 3)
+        }
         checkFollow(userId: userId)
         updateFollowCount(userId: userId)
     }

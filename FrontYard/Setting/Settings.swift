@@ -17,7 +17,7 @@ struct SettingsView: View {
     @Binding var isSettingsOpen: Bool
     @State  var showLoginView = false
     @EnvironmentObject var session: SessionStore
-
+    
     var body: some View {
         ZStack {
             
@@ -49,26 +49,51 @@ struct SettingsView: View {
                     
                 }
                 
-                
-                VStack(alignment: .leading, spacing: 10){
+                Section(header: Text("Authentication").foregroundColor(Color("Color2")).font(.subheadline).bold()) {
+                    //                    SectionButton(image: "emoji", label: "LogIn", showLoginView: $showLoginView)
+                    
+                    
                     Button(action: {
-                        
-                        self.session.logout()
+                        if(Auth.auth().currentUser != nil){
+                            self.session.logout()
+                            
+                        }else{
+                            
+                        }
                         self.showLoginView.toggle()
-
-//                        print(Auth.auth().currentUser!.email)
+                        //                        print(Auth.auth().currentUser!.email)
                     }) {
-                        Text(Auth.auth().currentUser != nil ? "LogOut" : "Login").foregroundColor(Color("Color2")).font(.subheadline).bold()
+                        HStack{
+                            Image("login").resizable().frame(width: 30, height: 30)   .font(.title)
+                            Text(Auth.auth().currentUser != nil ? "LogOut" : "Login").foregroundColor(Color("Color2")).font(.subheadline).bold()
+                            
+                        }
                         
                     }
                     
                     
-                    
-                    
-                }.sheet(isPresented: self.$showLoginView) {
-                    // ImagePickerController()
-                    LoginView(showLoginView: self.$showLoginView)
                 }
+                
+                
+                //                VStack(alignment: .leading, spacing: 10){
+                //                    Button(action: {
+                //
+                //                        self.session.logout()
+                //                        self.showLoginView.toggle()
+                ////                        print(Auth.auth().currentUser!.email)
+                //                    }) {
+                //                        Text(Auth.auth().currentUser != nil ? "LogOut" : "Login").foregroundColor(Color("Color2")).font(.subheadline).bold()
+                //
+                //                    }
+                //
+                //
+                //
+                //
+                //                }
+                //                .sheet(isPresented: self.$showLoginView) {
+                //                    // ImagePickerController()
+                //                    LoginView(showLoginView: self.$showLoginView)
+                //                }
                 
                 
                 
@@ -82,6 +107,12 @@ struct SettingsView: View {
                 }
             }
             
+            
+            if (showLoginView) {
+                LoginView(showLoginView: self.$showLoginView)
+                    .transition(.move(edge: .bottom))
+                    .animation(.default)
+            }
             
             if (isShowingMailView) {
                 mailView()

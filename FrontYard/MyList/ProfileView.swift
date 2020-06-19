@@ -24,20 +24,19 @@ struct ProfileView: View {
         self.profileViewModel.loadUserPosts(userId: Auth.auth().currentUser!.uid)
     }
     
-    var photoArray = [Photo(photo: "photo"), Photo(photo: "photo1"), Photo(photo: "photo2"), Photo(photo: "photo3"), Photo(photo: "photo4"), Photo(photo: "photo5"), Photo(photo: "photo6"), Photo(photo: "photo7"),  Photo(photo: "photo8"), Photo(photo: "photo9")]
-    
+  
     
     @State var selection = 0
     var displayState = ["square.grid.2x2.fill", "list.dash"]
     var body: some View {
-        let splitted = photoArray.splited(into: 3)
+//        let splitted = photoArray.splited(into: 3)
         return
             NavigationView {
                 
                 ScrollView {
                     VStack(alignment: .leading, spacing: 15) {
                         
-                        ProfileHeader(user: self.session.userSession,followingCount: $profileViewModel.followingCountState, followersCount: $profileViewModel.followersCountState)
+                        ProfileHeader(user: self.session.userSession,movieCount: profileViewModel.posts.count, followingCount: $profileViewModel.followingCountState, followersCount: $profileViewModel.followersCountState)
                         
                         //                        EditProfileButton()
                         ProfileInformation(user: self.session.userSession!)
@@ -48,19 +47,24 @@ struct ProfileView: View {
                         //
                         //                            }
                         //                        }.pickerStyle(SegmentedPickerStyle()).padding(.leading, 20).padding(.trailing, 20)
-                        VStack(alignment: .leading, spacing: 1) {
-                            // rows
-                            ForEach(0..<splitted.count) { index in
-                                HStack(spacing: 1) {
-                                    // Columns
-                                    ForEach(splitted[index]) { photo_element in
-                                        Image(photo_element.photo).resizable().scaledToFill().frame(width: UIScreen.main.bounds.width / 3, height: UIScreen.main.bounds.width / 3).clipped()
-                                        
-                                    }
-                                }
-                                
-                            }
+                        if !profileViewModel.isLoading {
+                            GridPosts(splitted: self.profileViewModel.splitted)
+                            
+                            
                         }
+                        //                        VStack(alignment: .leading, spacing: 1) {
+                        //                            // rows
+                        //                            ForEach(0..<splitted.count) { index in
+                        //                                HStack(spacing: 1) {
+                        //                                    // Columns
+                        //                                    ForEach(splitted[index]) { photo_element in
+                        //                                        Image(photo_element.photo).resizable().scaledToFill().frame(width: UIScreen.main.bounds.width / 3, height: UIScreen.main.bounds.width / 3).clipped()
+                        //
+                        //                                    }
+                        //                                }
+                        //
+                        //                            }
+                        //                        }
                         
                     }.padding(.top, 20)
                     

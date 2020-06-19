@@ -15,16 +15,14 @@ class SessionStore: ObservableObject {
     
     @Published var isLoggedIn = false
     @Published  var userSession: User?
+    @Published  var finishedListen = false
+
     var handle: AuthStateDidChangeListenerHandle?
     func listenAuthenticationState() {
         handle = Auth.auth().addStateDidChangeListener({ (auth, user) in
             if let user = user {
               print("listenAuthenticationState + \(user.uid)")
-                
-                
-                
-                
-                
+
                 Ref.FIRESTORE_DOCUMENT_USERID(userId:  user.uid).getDocument { (snapshot, error) in
 
                     guard let snapshot = snapshot else { return }
@@ -40,38 +38,19 @@ class SessionStore: ObservableObject {
                     } else {
                         print("there is no user, save new in firestore")
 
-                        //there is no user, save new in firestore
-                   
-//                        let user = User(_objectId: userId, _email: email, _firstName: "", _lastName: "")
-//                        saveUserLocally(mUserDictionary: userDictionaryFrom(user: user))
-//                        saveUserToFirestore(mUser: user)
                     }
                 }
-
-                
-                
-//
-//
-//
-//                let firestoreUserId = Ref.FIRESTORE_DOCUMENT_USERID(userId: user.uid)
-//                  firestoreUserId.getDocument { (document, error) in
-//                      if let dict = document?.data() {
-//                        print(dict)
-//                          guard let decoderUser = try? User.init(_dictionary: dict as NSDictionary) else {return}
-//                        self.userSession = decoderUser
-//                      }
-//                  }
                 self.isLoggedIn = true
-                
-                
-                
-                
+                self.finishedListen = true
+
             } else {
                 print("isLoogedIn is false")
                 self.isLoggedIn = false
                 self.userSession = nil
+                self.finishedListen = true
 
             }
+            
         })
     }
     

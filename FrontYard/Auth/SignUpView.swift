@@ -33,7 +33,7 @@ struct SignUpView: View {
     var body: some View {
         VStack {
             signupViewModel.image.resizable().aspectRatio(contentMode: .fill).frame(width: 80, height: 80)
-                .clipShape(Circle()).padding(.bottom, 80)
+                .clipShape(Circle()).padding(.bottom, 20)
                 .onTapGesture {
                     print("Tapped")
                     self.signupViewModel.showImagePicker = true

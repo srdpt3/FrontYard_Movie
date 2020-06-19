@@ -12,7 +12,7 @@ import SDWebImageSwiftUI
 struct ProfileHeader: View {
     
     var user: User?
-//    var postCount: Int
+    var movieCount: Int
     @Binding var followingCount: Int
     @Binding var followersCount: Int
     var body: some View {
@@ -23,7 +23,7 @@ struct ProfileHeader: View {
          
             Spacer()
             VStack {
-                Text("10").font(.headline)
+                Text("\(movieCount)").font(.headline)
                 Text("movies").font(.subheadline)
             }.padding(10)
             VStack {

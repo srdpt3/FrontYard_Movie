@@ -14,14 +14,15 @@ struct MovieListView: View {
     
     init() {
         self.nowPlayingState.loadMovies(with: .nowPlaying)
-        
+        print("laoding movinList")
+
     }
     var body: some View {
         NavigationView {
             
             
             VStack{
-                if nowPlayingState.movies != nil &&  self.nowPlayingState.movies!.count > 0 {
+                if nowPlayingState.movies != nil {
                     MoviePosterCarouselView(title: "Now Playing", movies: nowPlayingState.movies!)
                     
                     

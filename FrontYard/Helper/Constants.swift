@@ -115,6 +115,19 @@ class Ref {
         static func FIRESTORE_COLLECTION_FOLLOWERS(userId: String) -> CollectionReference {
                   return FIRESTORE_COLLECTION_FOLLOWERS.document(userId).collection("userFollowers")
         }
+    
+    
+    
+    
+    
+    static var FIRESTORE_COLLECTION_MYLIST = FIRESTORE_ROOT.collection("myfavoritelist")
+    static func FIRESTORE_COLLECTION_MYLIST_USERID(userId: String, movieId: Int) -> DocumentReference {
+         return FIRESTORE_COLLECTION_MYLIST.document(Auth.auth().currentUser!.uid).collection("movies").document(String(movieId))
+     }
         
     
+    
+    static func FIRESTORE_GET_MYLIST_USERID(userId: String) -> CollectionReference {
+        return FIRESTORE_COLLECTION_MYLIST.document(userId).collection("movies")
+     }
 }

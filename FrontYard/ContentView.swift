@@ -28,14 +28,22 @@ struct Home : View {
     @State var show = false
     @State private var isSettingsOpen = false
     @EnvironmentObject var session: SessionStore
+    @State  var showLoginView = false
+    @State var listenAdded = false
+    
+//    init(){
+//        listen()
+//    }
+    
+    
     func listen() {
         print("Listen")
         session.listenAuthenticationState()
     }
-    //    func logout() {
-    //        session.logout()
-    //    }
+    
     var body: some View{
+        
+        
         
         ZStack{
             
@@ -215,30 +223,7 @@ struct Home : View {
                         .background(self.index == 5 ? Color("Color2").opacity(0.2) : Color.clear)
                         .cornerRadius(10)
                     }
-                    //
-                    //                    Button(action: {
-                    //
-                    //
-                    //                    }) {
-                    //
-                    //                        VStack(spacing: 25){
-                    //
-                    //                            //                            Image("out")
-                    //                            //                                .foregroundColor(Color.white)
-                    //
-                    //
-                    //                            Text("App version: 1.0.0")
-                    //                                .foregroundColor(Color.white)
-                    //
-                    //
-                    //                            Text("Developer: Dustin yang")
-                    //                                .foregroundColor(Color.white)
-                    //
-                    //                        }
-                    //                            //                        .padding(.vertical, 10)
-                    //                            .padding(.horizontal,8)
-                    //                    }
-                    //
+                    
                     Spacer(minLength: 0)
                 }
                 .padding(.top,25)
@@ -281,23 +266,6 @@ struct Home : View {
                     
                     Spacer(minLength: 0)
                     
-//                    
-//                       Button(action: {}) {
-//                           NavigationLink(destination: UsersView()) {
-//                               Image(systemName: "person.fill").imageScale(Image.Scale.large).foregroundColor(.black)
-//                           }
-//                       }
-//                        
-//                        
-//                        
-//                       Button(action: {
-//                           self.session.logout()
-//                           
-//                       }) {
-//                           
-//                           Image(systemName: "arrow.right.circle.fill").imageScale(Image.Scale.large).foregroundColor(.black)
-//                           
-//                       }
                     
                 }
                 .padding(.top,UIApplication.shared.windows.first?.safeAreaInsets.top)
@@ -308,11 +276,11 @@ struct Home : View {
                     VStack{
                         
                         // Changing Views Based On Index...
-                        
                         if self.index == 0{
-                            
-                            //                            MainPage()
-                            MovieListView()
+                           if(self.session.finishedListen){
+                                MovieListView()
+
+                            }
                         }
                         else if self.index == 1{
                             MovieTopRatedView()
@@ -328,10 +296,21 @@ struct Home : View {
                         else if self.index == 4{
                             
                             
-                            if(Auth.auth().currentUser != nil){
-                                 ProfileView()
+                            if(self.session.isLoggedIn){
+                                ProfileView()
                             }else{
-                                Color.black
+                                //                                LoginView(showLoginView: self.$showLoginView)
+                                VStack(spacing: 10){
+                                    Spacer()
+                                    Button(action: {
+                                        
+                                    }) {
+                                        Text("Please SignIn to access the page").foregroundColor(Color("Color2")).font(.subheadline).bold().padding()
+                                        
+                                    }
+                                    Spacer()
+                                    
+                                }
                                 
                             }
                             
@@ -350,10 +329,13 @@ struct Home : View {
                 .offset(x: self.show ? UIScreen.main.bounds.width / 2 : 0, y: self.show ? 15 : 0)
                 // Rotating Slighlty...
                 .rotationEffect(.init(degrees: self.show ? -5 : 0))
+                .sheet(isPresented: self.$showLoginView) {
+                    LoginView(showLoginView: self.$showLoginView)
+            }
             
         }
         .background(Color("Color").edgesIgnoringSafeArea(.all))
-        .edgesIgnoringSafeArea(.all)
-        .onAppear(perform: listen)
+        .edgesIgnoringSafeArea(.all).onAppear(perform: listen)
+ 
     }
 }

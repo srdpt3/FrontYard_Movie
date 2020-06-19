@@ -12,14 +12,12 @@ import SDWebImageSwiftUI
 struct UserProfileView: View {
     var user: User
     @ObservedObject var profileViewModel = ProfileViewModel()
-    
-    var photoArray = [Photo(photo: "photo"), Photo(photo: "photo1"), Photo(photo: "photo2"), Photo(photo: "photo3"), Photo(photo: "photo4"), Photo(photo: "photo5"), Photo(photo: "photo6"), Photo(photo: "photo7"),  Photo(photo: "photo8"), Photo(photo: "photo9")]
+
     @State var selection = 0
     
     
     var displayState = ["square.grid.2x2.fill", "list.dash"]
     var body: some View {
-        let splitted = photoArray.splited(into: 3)
         return
             
             ScrollView {
@@ -27,13 +25,11 @@ struct UserProfileView: View {
                     //                    ProfileHeader(user: userData)
                     
                     
-                    ProfileHeader(user: user ,followingCount: $profileViewModel.followingCountState, followersCount: $profileViewModel.followersCountState)
+                    ProfileHeader(user: user ,movieCount: profileViewModel.posts.count,followingCount: $profileViewModel.followingCountState, followersCount: $profileViewModel.followersCountState)
                     ProfileInformation(user: user)
                     HStack(spacing: 5) {
                         FollowButton(user: user, isFollowing: $profileViewModel.isFollowing, followingCount: $profileViewModel.followingCountState, followersCount: $profileViewModel.followersCountState)
-//
                         
-//                        FollowButton(user: user, following_Count: $profileViewModel.followingCountState, followers_Count: $profileViewModel.followersCountState, isFollowing: $profileViewModel.isFollowing)
                         MessageButton()
                     }.padding(.leading, 20).padding(.trailing, 20)
                     
@@ -43,19 +39,27 @@ struct UserProfileView: View {
                     //
                     //                                    }
                     //                         }.pickerStyle(SegmentedPickerStyle()).padding(.leading, 20).padding(.trailing, 20)
-                    VStack(alignment: .leading, spacing: 1) {
-                        // rows
-                        ForEach(0..<splitted.count) { index in
-                            HStack(spacing: 1) {
-                                // Columns
-                                ForEach(splitted[index]) { photo_element in
-                                    Image(photo_element.photo).resizable().scaledToFill().frame(width: UIScreen.main.bounds.width / 3, height: UIScreen.main.bounds.width / 3).clipped()
-                                    
-                                }
-                            }
-                            
-                        }
+                    
+                    if !profileViewModel.isLoading {
+                        GridPosts(splitted: self.profileViewModel.splitted)
+                        
+                        
                     }
+                    
+                    
+                    //                    VStack(alignment: .leading, spacing: 1) {
+                    //                        // rows
+                    //                        ForEach(0..<splitted.count) { index in
+                    //                            HStack(spacing: 1) {
+                    //                                // Columns
+                    //                                ForEach(splitted[index]) { photo_element in
+                    //                                    Image(photo_element.photo).resizable().scaledToFill().frame(width: UIScreen.main.bounds.width / 3, height: UIScreen.main.bounds.width / 3).clipped()
+                    //
+                    //                                }
+                    //                            }
+                    //
+                    //                        }
+                    //                    }
                     
                 }.padding(.top, 20)
                 
@@ -79,27 +83,27 @@ struct UserProfileView: View {
 struct FollowButton: View {
     
     @ObservedObject var followViewModel = FollowViewModel()
-
+    
     var user: User
     @Binding var following_Count: Int
     @Binding var followers_Count: Int
     @Binding var isFollowing: Bool
-//
+    //
     init(user: User, isFollowing: Binding<Bool>, followingCount: Binding<Int>, followersCount: Binding<Int>) {
         self.user = user
         self._following_Count = followingCount
         self._followers_Count = followersCount
         self._isFollowing = isFollowing
     }
-        //    updateFollowCount()
-        // checkFollowState()
-//
-//
-//
-//
-//        //        self.followersCount = followViewModel.followersCount
-//        //        self.followingCount =  followViewModel.followingCount
-//    }
+    //    updateFollowCount()
+    // checkFollowState()
+    //
+    //
+    //
+    //
+    //        //        self.followersCount = followViewModel.followersCount
+    //        //        self.followingCount =  followViewModel.followingCount
+    //    }
     
     //    func checkFollowState() {
     //        followViewModel.checkFollow(userId: self.user.uid)
