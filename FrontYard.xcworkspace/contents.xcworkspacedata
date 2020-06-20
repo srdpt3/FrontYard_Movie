@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:FollowerModelView.swift">
+   </FileRef>
+   <FileRef
       location = "group:FrontYard.xcodeproj">
    </FileRef>
    <FileRef

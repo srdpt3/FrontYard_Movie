@@ -9,21 +9,20 @@
 import SwiftUI
 import FirebaseAuth
 
-struct Photo: Identifiable {
-    let id = UUID()
-    var photo = ""
-}
-
 struct ProfileView: View {
     
     @ObservedObject private var profileViewModel = ProfileViewModel()
-    @ObservedObject private  var followViewModel = FollowingModelView()
+    @ObservedObject private  var followingViewModel = FollowingModelView()
+    @ObservedObject private  var followerViewModel = FollowerViewModel()
+    
+    
     
     init() {
         self.profileViewModel.getUSerFromLocal()
         self.profileViewModel.loadUserPosts(userId: Auth.auth().currentUser!.uid)
         
-        self.followViewModel.searchFollowerUsers(userId: profileViewModel.user.uid)
+        self.followingViewModel.searchFollowingUsers(userId: profileViewModel.user.uid)
+        self.followerViewModel.searchFollowerUsers(userId: profileViewModel.user.uid)
         
     }
     @State var selection = 0
@@ -36,7 +35,10 @@ struct ProfileView: View {
                 ScrollView {
                     VStack(alignment: .leading, spacing: 15) {
                         
-                        ProfileHeader(user: profileViewModel.user ,users: $followViewModel.users, movieCount: profileViewModel.posts.count,followingCount: $profileViewModel.followingCountState, followersCount: $profileViewModel.followersCountState)
+                        
+                        ProfileHeader(user: profileViewModel.user, followingUsers: $followingViewModel.users, followerUsers: $followerViewModel.users, movieCount: profileViewModel.posts.count, followingCount: $profileViewModel.followingCountState, followersCount: $profileViewModel.followersCountState)
+                        
+                        
                         //                        EditProfileButton()
                         ProfileInformation(user: self.profileViewModel.user)
                         //
@@ -87,7 +89,8 @@ struct ProfileView: View {
                     
                 )  .onAppear {
                     self.profileViewModel.loadUserPosts(userId: Auth.auth().currentUser!.uid)
-                    self.followViewModel.searchFollowerUsers(userId: self.profileViewModel.user.uid)
+                    self.followingViewModel.searchFollowingUsers(userId: self.profileViewModel.user.uid)
+                    self.followerViewModel.searchFollowerUsers(userId: self.profileViewModel.user.uid)
                     
                 }
         }

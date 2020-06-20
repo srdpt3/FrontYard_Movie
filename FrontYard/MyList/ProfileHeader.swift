@@ -12,8 +12,10 @@ import SDWebImageSwiftUI
 struct ProfileHeader: View {
     
     var user: User?
-    @Binding var users: [User]
     
+    @Binding var followingUsers: [User]
+    @Binding var followerUsers: [User]
+
     var movieCount: Int
     @Binding var followingCount: Int
     @Binding var followersCount: Int
@@ -29,24 +31,27 @@ struct ProfileHeader: View {
                 Text("\(movieCount)").font(.headline)
                 Text("movies").font(.subheadline)
             }.padding(10)
-            VStack {
+            
+            
+            
+            
+            NavigationLink(destination: LazyView {FollowUserView(users: self.followerUsers)}) {
                 
+                VStack {
+                    Text("\(followersCount)").font(.headline)
+                    Text("Follower").font(.subheadline)
+                }.padding(10)
                 
-                
-                
-                
-                Text("\(followersCount)").font(.headline)
-                Text("Followers").font(.subheadline)
-            }.padding(10)        .onTapGesture {
-                print(" followersCount Tapped")
-                //                    self.signupViewModel.showImagePicker = true
             }
+            
+            
+            
             
             
             
             //                guard let u = self.users?? else return { nil}
             
-            NavigationLink(destination: LazyView {FollowUserView(users: self.users)}) {
+            NavigationLink(destination: LazyView {FollowUserView(users: self.followingUsers)}) {
                 VStack {
                     Text("\(followingCount)").font(.headline)
                     Text("Following").font(.subheadline)

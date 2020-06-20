@@ -16,7 +16,7 @@ class FollowingModelView: ObservableObject {
     
 
     
-    func searchFollowerUsers(userId: String) {
+    func searchFollowingUsers(userId: String) {
         isLoading = true
         //Api.User.searchUsers(text: searchText)
         UserApi().searchFollowingUser(userId: userId) { (users) in
