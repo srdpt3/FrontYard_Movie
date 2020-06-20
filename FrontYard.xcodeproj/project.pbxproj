@@ -40,6 +40,8 @@
 		116D6B1E2491367F00244C83 /* MoviePopularCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D6B1D2491367F00244C83 /* MoviePopularCarouselView.swift */; };
 		116D6B202491550F00244C83 /* MoviePopularCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D6B1F2491550F00244C83 /* MoviePopularCard.swift */; };
 		116D6B282491AB4400244C83 /* MovieUpComingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116D6B272491AB4400244C83 /* MovieUpComingView.swift */; };
+		11D20DDA249DB4B40060FEE1 /* FollowUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D20DD9249DB4B40060FEE1 /* FollowUserView.swift */; };
+		11D20DDC249DD5540060FEE1 /* FollowingModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D20DDB249DD5540060FEE1 /* FollowingModelView.swift */; };
 		11DBA8B12496A37E005FA80F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 11DBA8B02496A37D005FA80F /* GoogleService-Info.plist */; };
 		11DBA8B32496C7FC005FA80F /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DBA8B22496C7FC005FA80F /* LoginView.swift */; };
 		11DBA8B52496C806005FA80F /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DBA8B42496C806005FA80F /* SignUpView.swift */; };
@@ -136,6 +138,8 @@
 		116D6B252491A4A100244C83 /* movie_list.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = movie_list.json; sourceTree = "<group>"; };
 		116D6B262491A4A200244C83 /* search_movie.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = search_movie.json; sourceTree = "<group>"; };
 		116D6B272491AB4400244C83 /* MovieUpComingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieUpComingView.swift; sourceTree = "<group>"; };
+		11D20DD9249DB4B40060FEE1 /* FollowUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowUserView.swift; sourceTree = "<group>"; };
+		11D20DDB249DD5540060FEE1 /* FollowingModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingModelView.swift; sourceTree = "<group>"; };
 		11DBA8B02496A37D005FA80F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		11DBA8B22496C7FC005FA80F /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		11DBA8B42496C806005FA80F /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
@@ -432,6 +436,8 @@
 				11DBA8E8249AEA99005FA80F /* ProfileViewModel.swift */,
 				11DBA8ED249BFD14005FA80F /* MyMovieListModel.swift */,
 				11DBA8F1249C157D005FA80F /* GridPost.swift */,
+				11D20DD9249DB4B40060FEE1 /* FollowUserView.swift */,
+				11D20DDB249DD5540060FEE1 /* FollowingModelView.swift */,
 			);
 			path = MyList;
 			sourceTree = "<group>";
@@ -719,6 +725,7 @@
 				1103D41E248ED73B0068C5A5 /* MovieDetailView.swift in Sources */,
 				11DBA8D52496E4AD005FA80F /* ImagePicker.swift in Sources */,
 				1103D418248ED70F0068C5A5 /* MoviePosterCarouselView.swift in Sources */,
+				11D20DDA249DB4B40060FEE1 /* FollowUserView.swift in Sources */,
 				11DBA8E7249AE9DD005FA80F /* FollowViewModel.swift in Sources */,
 				11DBA8B82496CBA5005FA80F /* SignupViewModel.swift in Sources */,
 				11DBA8E1249A7182005FA80F /* UsersViewModel.swift in Sources */,
@@ -751,6 +758,7 @@
 				1103D40E248ED6C40068C5A5 /* SearchBarView.swift in Sources */,
 				11DBA8BE2496CC82005FA80F /* SigninButton.swift in Sources */,
 				1103D404248ED6570068C5A5 /* MovieDetailState.swift in Sources */,
+				11D20DDC249DD5540060FEE1 /* FollowingModelView.swift in Sources */,
 				11DBA8D02496CD92005FA80F /* StorageService.swift in Sources */,
 				11DBA8C82496CCCA005FA80F /* PasswordTextField.swift in Sources */,
 				1103D41A248ED71D0068C5A5 /* MovieListView.swift in Sources */,

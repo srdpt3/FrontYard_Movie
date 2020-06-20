@@ -12,29 +12,58 @@ import SDWebImageSwiftUI
 struct ProfileHeader: View {
     
     var user: User?
+    @Binding var users: [User]
+    
     var movieCount: Int
     @Binding var followingCount: Int
     @Binding var followersCount: Int
+    
     var body: some View {
         HStack {
             
-//
+            //
             AnimatedImage(url: URL(string: user!.profileImageUrl)).resizable().frame(width: 80, height: 80).aspectRatio(contentMode: .fill) .clipShape(Circle()).padding(.leading, 5)
-         
+            
             Spacer()
             VStack {
                 Text("\(movieCount)").font(.headline)
                 Text("movies").font(.subheadline)
             }.padding(10)
             VStack {
+                
+                
+                
+                
+                
                 Text("\(followersCount)").font(.headline)
                 Text("Followers").font(.subheadline)
-            }.padding(10)
-            VStack {
-                Text("\(followingCount)").font(.headline)
-                Text("Following").font(.subheadline)
-            }.padding(10)
+            }.padding(10)        .onTapGesture {
+                print(" followersCount Tapped")
+                //                    self.signupViewModel.showImagePicker = true
+            }
+            
+            
+            
+            //                guard let u = self.users?? else return { nil}
+            
+            NavigationLink(destination: LazyView {FollowUserView(users: self.users)}) {
+                VStack {
+                    Text("\(followingCount)").font(.headline)
+                    Text("Following").font(.subheadline)
+                }.padding(10)
+                
+                //                                           Image(systemName: "person.fill").imageScale(Image.Scale.large).foregroundColor(.black)
+            }
+            
+            
             Spacer()
         }
+    }
+}
+
+struct LazyView<Content: View>: View {
+    var content: () -> Content
+    var body: some View {
+        self.content()
     }
 }

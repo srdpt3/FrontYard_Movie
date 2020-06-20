@@ -3,4 +3,165 @@
    uuid = "39ADEDD5-5E75-4761-B16C-5D23ACDAF02C"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BC58B05B-5FA5-43E8-BA55-9F110BF1FA5E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FrontYard/Model/UsersViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "searchFollowingUser(userId:onSuccess:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "450407A9-E09F-4C44-945D-8FF5215C17C4"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FrontYard/Model/UsersViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "searchFollowingUser(userId:onSuccess:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A611CB59-06BF-4C9F-B933-EC978941C8CA"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FrontYard/Model/UsersViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "searchFollowingUser(userId:onSuccess:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CDBAEA3A-CF76-4DBF-AD73-F54FF0FDC011"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FrontYard/MyList/FollowUserView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "CDBAEA3A-CF76-4DBF-AD73-F54FF0FDC011 - 1fe56f27767cc9cc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; &lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.padding(CoreGraphics.CGFloat) -&gt; some&gt;&gt;.0 in closure #1 (FrontYard.User) -&gt; SwiftUI.NavigationLink&lt;&lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.padding(CoreGraphics.CGFloat) -&gt; some&gt;&gt;.0, FrontYard.UserProfileView&gt; in closure #1 () -&gt; SwiftUI.ForEach&lt;Swift.Array&lt;FrontYard.User&gt;, Swift.String, SwiftUI.NavigationLink&lt;&lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.padding(CoreGraphics.CGFloat) -&gt; some&gt;&gt;.0, FrontYard.UserProfileView&gt;&gt; in closure #1 () -&gt; SwiftUI.List&lt;Swift.Never, SwiftUI.ForEach&lt;Swift.Array&lt;FrontYard.User&gt;, Swift.String, SwiftUI.NavigationLink&lt;&lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.padding(CoreGraphics.CGFloat) -&gt; some&gt;&gt;.0, FrontYard.UserProfileView&gt;&gt;&gt; in FrontYard.FollowUserView.body.getter : some"
+                  moduleName = "FrontYard"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dustinyang/project/iOs/FrontYard/FrontYard/MyList/FollowUserView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "448">
+               </Location>
+               <Location
+                  uuid = "CDBAEA3A-CF76-4DBF-AD73-F54FF0FDC011 - 5aeff4ea360372c2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, SwiftUI.VStack&lt;SwiftUI.TupleView&lt;(SwiftUI.Text, SwiftUI.Text)&gt;&gt;)&gt; in closure #1 () -&gt; &lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.padding(CoreGraphics.CGFloat) -&gt; some&gt;&gt;.0 in closure #1 (FrontYard.User) -&gt; SwiftUI.NavigationLink&lt;&lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.padding(CoreGraphics.CGFloat) -&gt; some&gt;&gt;.0, FrontYard.UserProfileView&gt; in closure #1 () -&gt; SwiftUI.ForEach&lt;Swift.Array&lt;FrontYard.User&gt;, Swift.String, SwiftUI.NavigationLink&lt;&lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.padding(CoreGraphics.CGFloat) -&gt; some&gt;&gt;.0, FrontYard.UserProfileView&gt;&gt; in closure #1 () -&gt; SwiftUI.List&lt;Swift.Never, SwiftUI.ForEach&lt;Swift.Array&lt;FrontYard.User&gt;, Swift.String, SwiftUI.NavigationLink&lt;&lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.padding(CoreGraphics.CGFloat) -&gt; some&gt;&gt;.0, FrontYard.UserProfileView&gt;&gt;&gt; in FrontYard.FollowUserView.body.getter : some"
+                  moduleName = "FrontYard"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dustinyang/project/iOs/FrontYard/FrontYard/MyList/FollowUserView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "36"
+                  endingLineNumber = "36"
+                  offsetFromSymbolStart = "825">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3495DBB0-51DE-4FD0-936E-B8D28C5DE07A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FrontYard/MyList/ProfileHeader.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "3495DBB0-51DE-4FD0-936E-B8D28C5DE07A - 7ca6a70af1c0a640"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #4 () -&gt; SwiftUI.NavigationLink&lt;SwiftUI.TupleView&lt;(SwiftUI.Text, SwiftUI.Text)&gt;, FrontYard.FollowUserView&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, SwiftUI.Spacer, &lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.padding(CoreGraphics.CGFloat) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.onTapGesture(count: Swift.Int, perform: () -&gt; ()) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.padding(CoreGraphics.CGFloat) -&gt; some&gt;&gt;.0, SwiftUI.Spacer)&gt; in FrontYard.ProfileHeader.body.getter : some"
+                  moduleName = "FrontYard"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dustinyang/project/iOs/FrontYard/FrontYard/MyList/ProfileHeader.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "49"
+                  endingLineNumber = "49"
+                  offsetFromSymbolStart = "428">
+               </Location>
+               <Location
+                  uuid = "3495DBB0-51DE-4FD0-936E-B8D28C5DE07A - 253fc850142554a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.Text, SwiftUI.Text)&gt; in closure #4 () -&gt; SwiftUI.NavigationLink&lt;SwiftUI.TupleView&lt;(SwiftUI.Text, SwiftUI.Text)&gt;, FrontYard.FollowUserView&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, SwiftUI.Spacer, &lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.padding(CoreGraphics.CGFloat) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.onTapGesture(count: Swift.Int, perform: () -&gt; ()) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.padding(CoreGraphics.CGFloat) -&gt; some&gt;&gt;.0, SwiftUI.Spacer)&gt; in FrontYard.ProfileHeader.body.getter : some"
+                  moduleName = "FrontYard"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dustinyang/project/iOs/FrontYard/FrontYard/MyList/ProfileHeader.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "51"
+                  endingLineNumber = "51"
+                  offsetFromSymbolStart = "140">
+               </Location>
+               <Location
+                  uuid = "3495DBB0-51DE-4FD0-936E-B8D28C5DE07A - 253fc850142554a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.Text, SwiftUI.Text)&gt; in closure #4 () -&gt; SwiftUI.NavigationLink&lt;SwiftUI.TupleView&lt;(SwiftUI.Text, SwiftUI.Text)&gt;, FrontYard.FollowUserView&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, SwiftUI.Spacer, &lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.padding(CoreGraphics.CGFloat) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.onTapGesture(count: Swift.Int, perform: () -&gt; ()) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.padding(CoreGraphics.CGFloat) -&gt; some&gt;&gt;.0, SwiftUI.Spacer)&gt; in FrontYard.ProfileHeader.body.getter : some"
+                  moduleName = "FrontYard"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dustinyang/project/iOs/FrontYard/FrontYard/MyList/ProfileHeader.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "49"
+                  endingLineNumber = "49"
+                  offsetFromSymbolStart = "1813">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

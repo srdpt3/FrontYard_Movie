@@ -41,6 +41,8 @@ class StorageService {
 //                    let user = User.init(uid: userId, email: email, profileImageUrl: metaImageUrl, username: username, bio: "")
 
                     guard let dict = try? user.toDictionary() else {return}
+                    saveUserLocally(mUserDictionary: dict as NSDictionary)
+
                     //
                     //                        guard let decoderUser = try? User.init(fromDictionary: dict) else {return}
                     //                        print(decoderUser.username)

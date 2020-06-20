@@ -6,6 +6,7 @@
 //  Copyright © 2020 Dustin yang. All rights reserved.
 //
 import Foundation
+import FirebaseAuth
 
 struct User: Encodable, Decodable {
     var uid : String
@@ -49,5 +50,20 @@ init(uid: String, email: String, profileImageUrl: String, username: String, bio:
 //        return user
 //    }
     
+
+    static func currentUser() -> User? {
+        
+        if Auth.auth().currentUser != nil {
+            if let dictionary = UserDefaults.standard.object(forKey: "currentUser") {
+                print(User.init(_dictionary: dictionary as! NSDictionary))
+
+                return User.init(_dictionary: dictionary as! NSDictionary)
+            }
+        }
+        
+        return nil
+    }
+    
+   
 
 }

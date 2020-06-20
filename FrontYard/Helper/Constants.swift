@@ -103,8 +103,7 @@ class Ref {
         static func FIRESTORE_COLLECTION_FOLLOWING(userId: String) -> CollectionReference {
                return FIRESTORE_COLLECTION_FOLLOWING.document(userId).collection("userFollowing")
         }
-        
-    
+
     
     
     

@@ -14,11 +14,16 @@ class ProfileViewModel: ObservableObject {
     @Published var isLoading = false
     @Published var followersCountState = 0
     @Published var followingCountState = 0
-
+    @Published var user: User!
     var splitted: [[MyList]] = []
     
     
     @Published var isFollowing = false
+    
+    
+    func getUSerFromLocal(){
+        self.user = User.currentUser()
+    }
     
     func checkFollow(userId: String) {
         Ref.FIRESTORE_COLLECTION_FOLLOWERS_USERID(userId: userId).getDocument { (document, error) in

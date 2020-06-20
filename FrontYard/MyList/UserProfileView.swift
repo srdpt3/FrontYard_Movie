@@ -12,7 +12,8 @@ import SDWebImageSwiftUI
 struct UserProfileView: View {
     var user: User
     @ObservedObject var profileViewModel = ProfileViewModel()
-
+    //    @ObservedObject private  var followViewModel = FollowingModelView()
+    
     @State var selection = 0
     
     
@@ -25,7 +26,49 @@ struct UserProfileView: View {
                     //                    ProfileHeader(user: userData)
                     
                     
-                    ProfileHeader(user: user ,movieCount: profileViewModel.posts.count,followingCount: $profileViewModel.followingCountState, followersCount: $profileViewModel.followersCountState)
+                    //                    ProfileHeader(user: user ,movieCount: profileViewModel.posts.count,followingCount: $profileViewModel.followingCountState, followersCount: $profileViewModel.followersCountState)
+                    
+                    HStack {
+                        
+                        //
+                        AnimatedImage(url: URL(string:self.user.profileImageUrl)).resizable().frame(width: 80, height: 80).aspectRatio(contentMode: .fill) .clipShape(Circle()).padding(.leading, 5)
+                        
+                        Spacer()
+                        VStack {
+                            Text("\( self.profileViewModel.posts.count)").font(.headline)
+                            Text("movies").font(.subheadline)
+                        }.padding(10)
+                        VStack {
+                            
+                            
+                            
+                            
+                            
+                            Text("\( self.profileViewModel.followersCountState)").font(.headline)
+                            Text("Followers").font(.subheadline)
+                        }.padding(10)        .onTapGesture {
+                            print(" followersCount Tapped")
+                        }
+                        VStack {
+                            
+                            //                            NavigationLink(destination: LazyView {FollowUserView(users: self.users!)}) {
+                            Text("\(self.profileViewModel.followingCountState)").font(.headline)
+                            Text("Following").font(.subheadline)
+                            
+                            
+                        }.padding(10)
+                        Spacer()
+                    }
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    //
+                    //                                    ProfileHeader(user: profileViewModel.user ,users: followViewModel.users, movieCount: profileViewModel.posts.count,followingCount: $profileViewModel.followingCountState, followersCount: $profileViewModel.followersCountState)
+                    
                     ProfileInformation(user: user)
                     HStack(spacing: 5) {
                         FollowButton(user: user, isFollowing: $profileViewModel.isFollowing, followingCount: $profileViewModel.followingCountState, followersCount: $profileViewModel.followersCountState)
@@ -65,6 +108,7 @@ struct UserProfileView: View {
                 
             }.navigationBarTitle(Text(self.user.username), displayMode: .inline).onAppear {
                 self.profileViewModel.loadUserPosts(userId: self.user.uid)
+                //                self.followViewModel.searchFollowerUsers(userId: self.profileViewModel.user.uid)
                 
         }
         
@@ -74,11 +118,6 @@ struct UserProfileView: View {
     }
 }
 
-//struct UserProfileView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        UserProfileView()
-//    }
-//}
 
 struct FollowButton: View {
     
@@ -121,7 +160,7 @@ struct FollowButton: View {
     
     func follow() {
         if !self.isFollowing {
-            followViewModel.follow(userId: user.uid,  followingCount_onSuccess: { (followingCount) in
+            followViewModel.follow(userId: user.uid, user: user,  followingCount_onSuccess: { (followingCount) in
                 self.following_Count = followingCount
             }) { (followersCount) in
                 self.followers_Count = followersCount

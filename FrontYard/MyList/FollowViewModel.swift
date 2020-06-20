@@ -13,7 +13,20 @@ import Foundation
 import SwiftUI
 
 class FollowViewModel: ObservableObject {
-    
+    @Published var users: [User] = []
+    @Published var isLoading = false
+
+//    func searchFollowerUsers(userId: String) {
+//        isLoading = true
+//        //Api.User.searchUsers(text: searchText)
+//        UserApi().searchFollowingUser(userId: userId) { (users) in
+//            self.users = users
+//            
+//            
+//            self.isLoading = false
+//
+//        }
+//    }
 //    @Published var isFollowing = false
     
 //    func checkFollow(userId: String) {
@@ -26,24 +39,27 @@ class FollowViewModel: ObservableObject {
 //        }
 //    }
     
-    func handleFollow(userId: String, isFollowing: Bool, followingCount_onSuccess: @escaping(_ followingCount: Int) -> Void, followersCount_onSuccess: @escaping(_ followersCount: Int) -> Void ) {
-        if !isFollowing {
-            follow(userId: userId, followingCount_onSuccess: followingCount_onSuccess, followersCount_onSuccess: followersCount_onSuccess)
-        } else {
-            unfollow(userId: userId, followingCount_onSuccess: followingCount_onSuccess, followersCount_onSuccess: followersCount_onSuccess)
-        }
-         
-    }
+//    func handleFollow(userId: String, isFollowing: Bool, followingCount_onSuccess: @escaping(_ followingCount: Int) -> Void, followersCount_onSuccess: @escaping(_ followersCount: Int) -> Void ) {
+//        if !isFollowing {
+//            follow(userId: userId, followingCount_onSuccess: followingCount_onSuccess, followersCount_onSuccess: followersCount_onSuccess)
+//        } else {
+//            unfollow(userId: userId, followingCount_onSuccess: followingCount_onSuccess, followersCount_onSuccess: followersCount_onSuccess)
+//        }
+//         
+//    }
+//    
     
-    
-    func follow(userId: String, followingCount_onSuccess: @escaping(_ followingCount: Int) -> Void, followersCount_onSuccess: @escaping(_ followersCount: Int) -> Void ) {
-        Ref.FIRESTORE_COLLECTION_FOLLOWING_USERID(userId: userId).setData([:]) { (error) in
+    func follow(userId: String, user: User, followingCount_onSuccess: @escaping(_ followingCount: Int) -> Void, followersCount_onSuccess: @escaping(_ followersCount: Int) -> Void ) {
+        
+            guard let dict = try? user.toDictionary() else {return}
+        
+        Ref.FIRESTORE_COLLECTION_FOLLOWING_USERID(userId: userId).setData(dict) { (error) in
             if error == nil {
                 self.updateFollowCount(userId: userId, followingCount_onSuccess: followingCount_onSuccess, followersCount_onSuccess: followersCount_onSuccess)
             }
         }
         
-        Ref.FIRESTORE_COLLECTION_FOLLOWERS_USERID(userId: userId).setData([:]) { (error) in
+        Ref.FIRESTORE_COLLECTION_FOLLOWERS_USERID(userId: userId).setData(dict) { (error) in
             if error == nil {
                 self.updateFollowCount(userId: userId, followingCount_onSuccess: followingCount_onSuccess, followersCount_onSuccess: followersCount_onSuccess)
             }
@@ -82,5 +98,7 @@ class FollowViewModel: ObservableObject {
              }
          }
     }
+    
+    
     
 }

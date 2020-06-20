@@ -31,9 +31,9 @@ struct Home : View {
     @State  var showLoginView = false
     @State var listenAdded = false
     
-//    init(){
-//        listen()
-//    }
+    //    init(){
+    //        listen()
+    //    }
     
     
     func listen() {
@@ -277,10 +277,8 @@ struct Home : View {
                         
                         // Changing Views Based On Index...
                         if self.index == 0{
-                           if(self.session.finishedListen){
-                                MovieListView()
-
-                            }
+                            MovieListView()
+                            
                         }
                         else if self.index == 1{
                             MovieTopRatedView()
@@ -296,7 +294,7 @@ struct Home : View {
                         else if self.index == 4{
                             
                             
-                            if(self.session.isLoggedIn){
+                            if(User.currentUser() != nil){
                                 ProfileView()
                             }else{
                                 //                                LoginView(showLoginView: self.$showLoginView)
@@ -335,7 +333,7 @@ struct Home : View {
             
         }
         .background(Color("Color").edgesIgnoringSafeArea(.all))
-        .edgesIgnoringSafeArea(.all).onAppear(perform: listen)
- 
+        .edgesIgnoringSafeArea(.all)
+        
     }
 }

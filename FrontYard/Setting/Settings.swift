@@ -73,29 +73,7 @@ struct SettingsView: View {
                     
                     
                 }
-                
-                
-                //                VStack(alignment: .leading, spacing: 10){
-                //                    Button(action: {
-                //
-                //                        self.session.logout()
-                //                        self.showLoginView.toggle()
-                ////                        print(Auth.auth().currentUser!.email)
-                //                    }) {
-                //                        Text(Auth.auth().currentUser != nil ? "LogOut" : "Login").foregroundColor(Color("Color2")).font(.subheadline).bold()
-                //
-                //                    }
-                //
-                //
-                //
-                //
-                //                }
-                //                .sheet(isPresented: self.$showLoginView) {
-                //                    // ImagePickerController()
-                //                    LoginView(showLoginView: self.$showLoginView)
-                //                }
-                
-                
+
                 
                 
                 if UIDevice.current.userInterfaceIdiom == .pad {

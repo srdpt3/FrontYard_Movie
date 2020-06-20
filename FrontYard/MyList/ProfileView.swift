@@ -16,30 +16,29 @@ struct Photo: Identifiable {
 
 struct ProfileView: View {
     
-    @EnvironmentObject var session: SessionStore
-    @ObservedObject var profileViewModel = ProfileViewModel()
-    
+    @ObservedObject private var profileViewModel = ProfileViewModel()
+    @ObservedObject private  var followViewModel = FollowingModelView()
     
     init() {
+        self.profileViewModel.getUSerFromLocal()
         self.profileViewModel.loadUserPosts(userId: Auth.auth().currentUser!.uid)
+        
+        self.followViewModel.searchFollowerUsers(userId: profileViewModel.user.uid)
+        
     }
-    
-  
-    
     @State var selection = 0
     var displayState = ["square.grid.2x2.fill", "list.dash"]
     var body: some View {
-//        let splitted = photoArray.splited(into: 3)
+        
         return
             NavigationView {
                 
                 ScrollView {
                     VStack(alignment: .leading, spacing: 15) {
                         
-                        ProfileHeader(user: self.session.userSession,movieCount: profileViewModel.posts.count, followingCount: $profileViewModel.followingCountState, followersCount: $profileViewModel.followersCountState)
-                        
+                        ProfileHeader(user: profileViewModel.user ,users: $followViewModel.users, movieCount: profileViewModel.posts.count,followingCount: $profileViewModel.followingCountState, followersCount: $profileViewModel.followersCountState)
                         //                        EditProfileButton()
-                        ProfileInformation(user: self.session.userSession!)
+                        ProfileInformation(user: self.profileViewModel.user)
                         //
                         //                        Picker(selection: $selection, label: Text("Grid or Table")) {
                         //                            ForEach(0..<displayState.count) { index in
@@ -68,7 +67,7 @@ struct ProfileView: View {
                         
                     }.padding(.top, 20)
                     
-                }.navigationBarTitle( Text(self.session.userSession!.username).bold(), displayMode: .inline).navigationBarItems(leading:
+                }.navigationBarTitle( Text(self.profileViewModel.user.username).bold(), displayMode: .inline).navigationBarItems(leading:
                     Button(action: {}) {
                         NavigationLink(destination: UsersView()) {
                             Image(systemName: "person.fill").imageScale(Image.Scale.large).foregroundColor(.black)
@@ -79,15 +78,17 @@ struct ProfileView: View {
                     //                    ,trailing:
                     //                   Button(action: {
                     //                       self.session.logout()
-                    //                       
+                    //
                     //                   }) {
-                    //                       
+                    //
                     //                       Image(systemName: "arrow.right.circle.fill").imageScale(Image.Scale.large).foregroundColor(.black)
-                    //                       
+                    //
                     //                   }
                     
                 )  .onAppear {
                     self.profileViewModel.loadUserPosts(userId: Auth.auth().currentUser!.uid)
+                    self.followViewModel.searchFollowerUsers(userId: self.profileViewModel.user.uid)
+                    
                 }
         }
         
@@ -128,41 +129,21 @@ struct ProfileInformation: View {
 }
 
 
-//func downloadUserFromFirestore(userId: String, email: String) {
-//
-//    Ref.FIRESTORE_DOCUMENT_USERID(userId: user.uid)
-//                  firestoreUserId.getDocument { (document, error) in
-//                      if let dict = document?.data() {
-//                        print(dict)
-//                          guard let decoderUser = try? User.init(_dictionary: dict as NSDictionary) else {return}
-//                        self.userSession = decoderUser
-//                      }
-//                  }
-//    
-//    
-//    
-//    Ref.FIRESTORE_DOCUMENT_USERID(userId: userId).getDocument { (snapshot, error) in
-//
-//        guard let snapshot = snapshot else { return }
-//
-//        if snapshot.exists {
-//            print("download current user from firestore")
-//            saveUserLocally(mUserDictionary: snapshot.data()! as NSDictionary)
-//        } else {
-//            //there is no user, save new in firestore
-//
-//            let user = User(_objectId: userId, _email: email, _firstName: "", _lastName: "")
-//            saveUserLocally(mUserDictionary: userDictionaryFrom(user: user))
-//            saveUserToFirestore(mUser: user)
-//        }
-//    }
-//
-//
-//}
-
-
 func saveUserLocally(mUserDictionary: NSDictionary) {
-    
+    print("SAved Locally")
     UserDefaults.standard.set(mUserDictionary, forKey: "currentUser")
     UserDefaults.standard.synchronize()
 }
+
+
+func resetDefaults() {
+    print("resetDefaults")
+    
+    let defaults = UserDefaults.standard
+    let dictionary = defaults.dictionaryRepresentation()
+    dictionary.keys.forEach { key in
+        defaults.removeObject(forKey: key)
+    }
+}
+
+
