@@ -33,6 +33,9 @@ class MovieDetailState: ObservableObject {
                 self.error = error as NSError
             }
         }
+        
     }
+    
+
 }
 

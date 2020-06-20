@@ -39,7 +39,7 @@ struct ProfileView: View {
                         ProfileHeader(user: profileViewModel.user, followingUsers: $followingViewModel.users, followerUsers: $followerViewModel.users, movieCount: profileViewModel.posts.count, followingCount: $profileViewModel.followingCountState, followersCount: $profileViewModel.followersCountState)
                         
                         
-                        //                        EditProfileButton()
+                                                EditProfileButton()
                         ProfileInformation(user: self.profileViewModel.user)
                         //
                         //                        Picker(selection: $selection, label: Text("Grid or Table")) {
@@ -53,19 +53,7 @@ struct ProfileView: View {
                             
                             
                         }
-                        //                        VStack(alignment: .leading, spacing: 1) {
-                        //                            // rows
-                        //                            ForEach(0..<splitted.count) { index in
-                        //                                HStack(spacing: 1) {
-                        //                                    // Columns
-                        //                                    ForEach(splitted[index]) { photo_element in
-                        //                                        Image(photo_element.photo).resizable().scaledToFill().frame(width: UIScreen.main.bounds.width / 3, height: UIScreen.main.bounds.width / 3).clipped()
-                        //
-                        //                                    }
-                        //                                }
-                        //
-                        //                            }
-                        //                        }
+
                         
                     }.padding(.top, 20)
                     

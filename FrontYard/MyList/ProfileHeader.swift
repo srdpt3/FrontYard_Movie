@@ -32,32 +32,22 @@ struct ProfileHeader: View {
                 Text("movies").font(.subheadline)
             }.padding(10)
             
-            
-            
-            
+
             NavigationLink(destination: LazyView {FollowUserView(users: self.followerUsers)}) {
                 
                 VStack {
                     Text("\(followersCount)").font(.headline)
                     Text("Follower").font(.subheadline)
-                }.padding(10)
+                }.padding(10).foregroundColor(.black)
                 
             }
-            
-            
-            
-            
-            
-            
-            //                guard let u = self.users?? else return { nil}
-            
+
             NavigationLink(destination: LazyView {FollowUserView(users: self.followingUsers)}) {
                 VStack {
                     Text("\(followingCount)").font(.headline)
                     Text("Following").font(.subheadline)
-                }.padding(10)
-                
-                //                                           Image(systemName: "person.fill").imageScale(Image.Scale.large).foregroundColor(.black)
+                }.padding(10).foregroundColor(.black)
+
             }
             
             

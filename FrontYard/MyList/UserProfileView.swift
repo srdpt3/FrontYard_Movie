@@ -23,7 +23,11 @@ struct UserProfileView: View {
             
             ScrollView {
                 VStack(alignment: .leading, spacing: 15) {
-
+                    //                    ProfileHeader(user: userData)
+                    
+                    
+                    //                    ProfileHeader(user: user ,movieCount: profileViewModel.posts.count,followingCount: $profileViewModel.followingCountState, followersCount: $profileViewModel.followersCountState)
+                    
                     HStack {
                         
                         //

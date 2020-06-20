@@ -259,7 +259,7 @@
 				11DBA8D92497B47C005FA80F /* Setting */,
 				11DBA8B62496C80D005FA80F /* Auth */,
 				11DBA8EA249AFEFC005FA80F /* MyList */,
-				11D20DE1249E7B100060FEE1 /* UserApi.swift */,
+				11D20DE3249E98820060FEE1 /* Api */,
 			);
 			path = FrontYard;
 			sourceTree = "<group>";
@@ -389,6 +389,14 @@
 				116D6B262491A4A200244C83 /* search_movie.json */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		11D20DE3249E98820060FEE1 /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				11D20DE1249E7B100060FEE1 /* UserApi.swift */,
+			);
+			path = Api;
 			sourceTree = "<group>";
 		};
 		11DBA8B62496C80D005FA80F /* Auth */ = {

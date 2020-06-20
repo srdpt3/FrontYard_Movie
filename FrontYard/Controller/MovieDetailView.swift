@@ -12,8 +12,9 @@ import FirebaseAuth
 struct MovieDetailView: View {
     
     let movieId: Int
+    
     @ObservedObject private var movieDetailState = MovieDetailState()
-
+    
     var body: some View {
         ZStack {
             LoadingView(isLoading: self.movieDetailState.isLoading, error: self.movieDetailState.error) {
@@ -34,21 +35,34 @@ struct MovieDetailView: View {
 
 struct MovieDetailListView: View {
     @ObservedObject private var myMovieListModel = MyMovieListModel()
-
+    
     var movie: Movie
     @State private var selectedTrailer: MovieVideo?
     let imageLoader = ImageLoader()
     var color : Int = 0
-    
-    
-    
+    @State var liked : Bool = false
+    let HEARTFILL = "suit.heart"
+    let HEART = "suit.heart"
     
     
     
     func addToMyList(){
         
-
-        self.myMovieListModel.addToMyList(userId: Auth.auth().currentUser!.uid, movieId: self.movie.id  , imageURL: self.movie.posterURL.absoluteString )
+        //        self.liked.toggle()
+        
+        if(self.myMovieListModel.liked){
+            //remove from the list
+            self.myMovieListModel.removeFromList(id: self.movie.id)
+        }else{
+            
+            // Add to the list
+            self.myMovieListModel.addToMyList(userId: Auth.auth().currentUser!.uid, movieId: self.movie.id  , imageURL: self.movie.posterURL.absoluteString )
+        }
+        
+        
+        
+        self.myMovieListModel.liked.toggle()
+        
     }
     
     var body: some View {
@@ -73,15 +87,17 @@ struct MovieDetailListView: View {
                 
                 Spacer()
                 Button(action: addToMyList) {
-            
-                    Image("heart")
-                        .renderingMode(.original)
-                        .padding()
-                }.buttonStyle(PlainButtonStyle())
-                .background(self.color == 0 ? Color.yellow : Color.orange)
-                .clipShape(Circle())
+                    
+                    Image(self.myMovieListModel.liked == true ? "heartred" : "heartwhite").resizable().frame(width: 50, height: 50).aspectRatio(contentMode: .fit)
+                    //                        .renderingMode(.original)
+                    //                        .padding()
+                    
+                    
+                }.buttonStyle(PlainButtonStyle()).foregroundColor(.white)
+                    .background(Color.white)
+                //                    .clipShape(Circle())
             }
-
+            
             
             Divider()
             
@@ -133,7 +149,7 @@ struct MovieDetailListView: View {
                 HStack{
                     Text("Trailer").font(.headline)
                     Image(systemName: "play.circle.fill").resizable().frame(width: 20, height: 20)
-                                               .foregroundColor(Color("Color2"))
+                        .foregroundColor(Color("Color2"))
                 }
                 
                 ForEach(movie.youtubeTrailers!) { trailer in
@@ -153,10 +169,13 @@ struct MovieDetailListView: View {
         }
         .sheet(item: self.$selectedTrailer) { trailer in
             SafariView(url: trailer.youtubeURL!)
-        }.padding(.bottom, 80)
+        }.padding(.bottom, 80).onAppear(){
+            self.myMovieListModel.checkLiked(id: self.movie.id)
+            
+        }
     }
     
-
+    
 }
 
 struct MovieDetailImage: View {

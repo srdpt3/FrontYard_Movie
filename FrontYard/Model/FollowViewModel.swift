@@ -21,8 +21,8 @@ class FollowViewModel: ObservableObject {
 //        //Api.User.searchUsers(text: searchText)
 //        UserApi().searchFollowingUser(userId: userId) { (users) in
 //            self.users = users
-//            
-//            
+//
+//
 //            self.isLoading = false
 //
 //        }
@@ -59,7 +59,10 @@ class FollowViewModel: ObservableObject {
             }
         }
         
-        Ref.FIRESTORE_COLLECTION_FOLLOWERS_USERID(userId: userId).setData(dict) { (error) in
+        
+        guard let currentUser  = try? User.currentUser().toDictionary() else {return}
+        
+        Ref.FIRESTORE_COLLECTION_FOLLOWERS_USERID(userId: userId).setData(currentUser) { (error) in
             if error == nil {
                 self.updateFollowCount(userId: userId, followingCount_onSuccess: followingCount_onSuccess, followersCount_onSuccess: followersCount_onSuccess)
             }

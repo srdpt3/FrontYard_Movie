@@ -7,11 +7,13 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 class MyMovieListModel: ObservableObject {
     
     @Published var isSucess = false
-    
+    @Published var liked : Bool = false
+
     
     func addToMyList(userId: String, movieId: Int, imageURL:String) {
         
@@ -28,6 +30,35 @@ class MyMovieListModel: ObservableObject {
         }
         
         
+    }
+    
+    
+    func checkLiked(id: Int) {
+        
+        Ref.FIRESTORE_COLLECTION_MYLIST_USERID(userId: Auth.auth().currentUser!.uid, movieId: id).getDocument { (document, error) in
+            print(document?.data())
+
+            if let doc = document, doc.exists {
+                self.liked = true
+            } else {
+                self.liked  = false
+            }
+            
+        }
+        
+        
+    }
+    
+    
+    func removeFromList(id : Int){
+        Ref.FIRESTORE_COLLECTION_MYLIST_USERID(userId: Auth.auth().currentUser!.uid, movieId: id).getDocument { (document, error) in
+              
+            print(document?.data())
+              if let doc = document, doc.exists {
+                doc.reference.delete()
+            }
+              
+          }
     }
     
 }

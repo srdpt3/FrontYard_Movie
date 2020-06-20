@@ -51,8 +51,6 @@ class ProfileViewModel: ObservableObject {
             
             if let doc = snapshot?.documents {
                 self.followingCountState = doc.count
-                
-                print("followingCountState \(self.followingCountState)")
             }
         }
         
@@ -60,8 +58,6 @@ class ProfileViewModel: ObservableObject {
              if let doc = snapshot?.documents {
                 self.followersCountState = doc.count
                 
-                print("followersCountState \(self.followersCountState)")
-
              }
          }
     }
