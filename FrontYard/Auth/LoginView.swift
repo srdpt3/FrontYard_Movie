@@ -10,7 +10,7 @@ import SwiftUI
 
 struct LoginView: View {
     @Environment(\.presentationMode) var presentationMode
-
+    
     @ObservedObject var signinViewModel = SigninViewModel()
     @Binding  var showLoginView : Bool
     @State var showSignupView : Bool = false
@@ -35,7 +35,7 @@ struct LoginView: View {
     func clean() {
         self.showLoginView.toggle()
         self.presentationMode.wrappedValue.dismiss()
-
+        
         self.signinViewModel.email = ""
         self.signinViewModel.password = ""
         
@@ -66,64 +66,44 @@ struct LoginView: View {
             
             ZStack {
                 ScrollView(.vertical, showsIndicators: false){
-                          VStack {
-                                        //
-                                        //                Group {
-                                        Image("FrontYard").resizable().frame(width: 200, height: 50).aspectRatio(contentMode: .fit).padding(.bottom,10)
-                                        //                    Text(TEXT_SIGNIN_HEADLINE).font(Font.title).padding(.bottom)
-                                        //                    Text(TEXT_SIGNIN_SUBHEADLINE)
-                                        //                        .font(.subheadline)
-                                        //                        .foregroundColor(.gray)
-                                        //                        .multilineTextAlignment(TextAlignment.center)
-                                        //                }
-                                        Divider()
-                                        EmailTextField(email: $signinViewModel.email)
-                                        PasswordTextField(password: $signinViewModel.password)
-                                        SigninButton(action: signIn, label: TEXT_SIGN_IN).alert(isPresented: $signinViewModel.showAlert) {
-                                            Alert(title: Text("Error"), message: Text(self.signinViewModel.errorString), dismissButton: .default(Text("OK"), action: {
-                                                
-                                            }))
-                                            
-                                        }
-                    //                    alert(isPresented: $signinViewModel.success){
-                    //                        Alert(title: Text("Successfully Logged in"), message: Text(self.signinViewModel.errorString), dismissButton: .default(Text("OK"), action: {
-                    //
-                    //                            //                        self.showLoginView.toggle()
-                    //
-                    //                        }))
-                    //                    }
-                                        
-                                        //                    Divider()
-                                        //                    NavigationLink(destination: SignUpView()) {
-                                        //                        SignupText()
-                                        //                    }
-                                        
-                                        
-                                        Button(action: {
-                                            self.showSignupView.toggle()
-                                        }){
-                                            HStack {
-                                                Text(TEXT_NEED_AN_ACCOUNT).font(.footnote).foregroundColor(.gray)
-                                                Text(TEXT_SIGN_UP).foregroundColor(Color("Color2"))
-                                            }
-                                        }
-                                        
-                                        
-                                        //                }
-                                        Spacer()
-                                        Spacer()
+                    VStack {
+                        //
+                        //                Group {
+                        Image("FrontYard").resizable().frame(width: (UIScreen.main.bounds.width ) / 1.7, height: (UIScreen.main.bounds.width ) / 6.5).aspectRatio(contentMode: .fit).padding(.bottom,10)
+        Spacer()
+                        Divider()
+                        EmailTextField(email: $signinViewModel.email)
+                        PasswordTextField(password: $signinViewModel.password)
+                        SigninButton(action: signIn, label: TEXT_SIGN_IN).alert(isPresented: $signinViewModel.showAlert) {
+                            Alert(title: Text("Error"), message: Text(self.signinViewModel.errorString), dismissButton: .default(Text("OK"), action: {
+                                
+                            }))
+                            
+                        }
+         
+                        
+                        Button(action: {
+                            self.showSignupView.toggle()
+                        }){
+                            HStack {
+                                Text(TEXT_NEED_AN_ACCOUNT).font(.footnote).foregroundColor(.gray)
+                                Text(TEXT_SIGN_UP).foregroundColor(Color("Color2"))
+                            }
+                        }
+                        
+                        Spacer()
+                        Spacer()
+                        
+                    }
+                        
+                        
+                    .sheet(isPresented: self.$showSignupView) {
 
-                          }
-
-                                        
-                                        .sheet(isPresented: self.$showSignupView) {
-                                            // ImagePickerController()
-                                            //                                    LoginView(showLoginView: self.$showLoginView)
-                                            SignUpView(showSignupView: self.$showSignupView, showSignInView: self.$showLoginView)
-                                    }
-                                    
+                        SignUpView(showSignupView: self.$showSignupView, showSignInView: self.$showLoginView)
+                    }
+                    
                 }    .edgesIgnoringSafeArea(.all).padding(.top, -20)
-   
+                
                 
                 getSinWave(interval: universalSize.width, amplitude: 130, baseline: -50 + universalSize.height/1.7)
                     .foregroundColor(Color.init(red: 0.3, green: 0.6, blue: 1).opacity(0.4))
@@ -140,13 +120,13 @@ struct LoginView: View {
                             .repeatForever(autoreverses: false)
                 )
                 Spacer()
-
+                
             }.onAppear(){
                 self.isAnimated = true
             }
         }.accentColor(Color.black)
         
-
+        
     }
     func hide_keyboard()
     {

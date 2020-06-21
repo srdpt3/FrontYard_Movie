@@ -15,7 +15,6 @@ class SessionStore: ObservableObject {
     
     @Published var isLoggedIn = false
     @Published  var userSession: User?
-    @Published  var finishedListen = false
     
     var handle: AuthStateDidChangeListenerHandle?
     func listenAuthenticationState() {
@@ -35,18 +34,14 @@ class SessionStore: ObservableObject {
                         self.isLoggedIn = true
                     } else {
                         print("there is no user, save new in firestore")
-                        
                     }
                 }
-         
                 
             } else {
-                print("isLoogedIn is false")
                 self.isLoggedIn = false
                 self.userSession = nil
             
             }
-            self.finishedListen = true
 
         })
     }

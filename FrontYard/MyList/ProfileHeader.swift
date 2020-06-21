@@ -24,7 +24,7 @@ struct ProfileHeader: View {
         HStack {
             
             //
-            AnimatedImage(url: URL(string: user!.profileImageUrl)).resizable().frame(width: 80, height: 80).aspectRatio(contentMode: .fill) .clipShape(Circle()).padding(.leading, 5)
+            AnimatedImage(url: URL(string: user!.profileImageUrl)).resizable().frame(width: 80, height: 80).cornerRadius(40).padding(.leading, 15).aspectRatio(contentMode: .fit)
             
             Spacer()
             VStack {
@@ -38,9 +38,9 @@ struct ProfileHeader: View {
                 VStack {
                     Text("\(followersCount)").font(.headline)
                     Text("Follower").font(.subheadline)
-                }.padding(10).foregroundColor(.black)
+                }.padding(10)
                 
-            }
+            }.foregroundColor(.black)
 
             NavigationLink(destination: LazyView {FollowUserView(users: self.followingUsers)}) {
                 VStack {
@@ -48,7 +48,7 @@ struct ProfileHeader: View {
                     Text("Following").font(.subheadline)
                 }.padding(10).foregroundColor(.black)
 
-            }
+            }.foregroundColor(.black)
             
             
             Spacer()

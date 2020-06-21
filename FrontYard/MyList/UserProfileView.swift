@@ -30,7 +30,6 @@ struct UserProfileView: View {
                     
                     HStack {
                         
-                        //
                         AnimatedImage(url: URL(string:self.user.profileImageUrl)).resizable().frame(width: 80, height: 80).aspectRatio(contentMode: .fill) .clipShape(Circle()).padding(.leading, 5)
                         
                         Spacer()
@@ -39,11 +38,7 @@ struct UserProfileView: View {
                             Text("movies").font(.subheadline)
                         }.padding(10)
                         VStack {
-                            
-                            
-                            
-                            
-                            
+
                             Text("\( self.profileViewModel.followersCountState)").font(.headline)
                             Text("Followers").font(.subheadline)
                         }.padding(10)        .onTapGesture {
@@ -59,15 +54,7 @@ struct UserProfileView: View {
                         }.padding(10)
                         Spacer()
                     }
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    //
-                    //                                    ProfileHeader(user: profileViewModel.user ,users: followViewModel.users, movieCount: profileViewModel.posts.count,followingCount: $profileViewModel.followingCountState, followersCount: $profileViewModel.followersCountState)
+
                     
                     ProfileInformation(user: user)
                     HStack(spacing: 5) {
@@ -82,27 +69,14 @@ struct UserProfileView: View {
                     //
                     //                                    }
                     //                         }.pickerStyle(SegmentedPickerStyle()).padding(.leading, 20).padding(.trailing, 20)
-                    
+                    Divider()
+
                     if !profileViewModel.isLoading {
                         GridPosts(splitted: self.profileViewModel.splitted)
                         
                         
                     }
-                    
-                    
-                    //                    VStack(alignment: .leading, spacing: 1) {
-                    //                        // rows
-                    //                        ForEach(0..<splitted.count) { index in
-                    //                            HStack(spacing: 1) {
-                    //                                // Columns
-                    //                                ForEach(splitted[index]) { photo_element in
-                    //                                    Image(photo_element.photo).resizable().scaledToFill().frame(width: UIScreen.main.bounds.width / 3, height: UIScreen.main.bounds.width / 3).clipped()
-                    //
-                    //                                }
-                    //                            }
-                    //
-                    //                        }
-                    //                    }
+ 
                     
                 }.padding(.top, 20)
                 
@@ -134,29 +108,7 @@ struct FollowButton: View {
         self._followers_Count = followersCount
         self._isFollowing = isFollowing
     }
-    //    updateFollowCount()
-    // checkFollowState()
-    //
-    //
-    //
-    //
-    //        //        self.followersCount = followViewModel.followersCount
-    //        //        self.followingCount =  followViewModel.followingCount
-    //    }
-    
-    //    func checkFollowState() {
-    //        followViewModel.checkFollow(userId: self.user.uid)
-    //    }
-    
-    
-    //    func updateFollowCount() {
-    //        followViewModel.updateFollowCount(userId: user.uid, followingCount_onSuccess: { (following_Count) in
-    //            self.following_Count = following_Count
-    //        }) { (followers_Count) in
-    //            self.followers_Count = followers_Count
-    //        }
-    //    }
-    //
+
     
     func follow() {
         if !self.isFollowing {

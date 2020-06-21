@@ -48,20 +48,24 @@ struct MovieDetailListView: View {
     
     func addToMyList(){
         
-        //        self.liked.toggle()
         
-        if(self.myMovieListModel.liked){
-            //remove from the list
-            self.myMovieListModel.removeFromList(id: self.movie.id)
-        }else{
-            
-            // Add to the list
-            self.myMovieListModel.addToMyList(userId: Auth.auth().currentUser!.uid, movieId: self.movie.id  , imageURL: self.movie.posterURL.absoluteString )
+        if(User.currentUser() != nil){
+            if(self.myMovieListModel.liked){
+                //remove from the list
+                self.myMovieListModel.removeFromList(id: self.movie.id)
+            }else{
+                
+                // Add to the list
+                self.myMovieListModel.addToMyList(userId: Auth.auth().currentUser!.uid, movieId: self.movie.id  , imageURL: self.movie.posterURL.absoluteString )
+            }
+            self.myMovieListModel.liked.toggle()
+
         }
         
         
         
-        self.myMovieListModel.liked.toggle()
+        
+        
         
     }
     
@@ -170,7 +174,12 @@ struct MovieDetailListView: View {
         .sheet(item: self.$selectedTrailer) { trailer in
             SafariView(url: trailer.youtubeURL!)
         }.padding(.bottom, 80).onAppear(){
-            self.myMovieListModel.checkLiked(id: self.movie.id)
+            
+            if(User.currentUser() != nil){
+                self.myMovieListModel.checkLiked(id: self.movie.id)
+                
+            }
+            
             
         }
     }

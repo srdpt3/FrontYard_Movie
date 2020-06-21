@@ -29,7 +29,9 @@ struct SettingsView: View {
                 }
                 
                 Section(header: Text("About this app").foregroundColor(Color("Color2")).font(.subheadline).bold()) {
-                    Text("This app is designed to help search movies. Using the app, you can watch trailers, read revies and get movie infmation all from within the app").font(.caption)
+                    Text("This app is designed to help search movies. Using the app, you can watch trailers, read reviews and get movie info all from within the app").font(.caption)
+                    Text("You can also follow users to share your favorite list").font(.caption)
+
                 }
                 
                 Section(header: Text("Credit").foregroundColor(Color("Color2")).font(.subheadline).bold()) {
@@ -39,15 +41,7 @@ struct SettingsView: View {
                     
                     
                 }
-                Section(header: Text("Developer").foregroundColor(Color("Color2")).font(.subheadline).bold()) {
-                    VStack(alignment: .leading, spacing: 10){
-                        
-                        Button("Dustin Yang  - Github page") {UIApplication.shared.open(URL(string: "https://github.com/srdpt3")!)}
-                        
-                    }
-                    
-                    
-                }
+  
                 
                 Section(header: Text("Authentication").foregroundColor(Color("Color2")).font(.subheadline).bold()) {
                     //                    SectionButton(image: "emoji", label: "LogIn", showLoginView: $showLoginView)
@@ -55,6 +49,7 @@ struct SettingsView: View {
                     
                     Button(action: {
                         if(Auth.auth().currentUser != nil){
+                            self.session.unbind()
                             self.session.logout()
                             
                         }else{
@@ -65,7 +60,7 @@ struct SettingsView: View {
                     }) {
                         HStack{
                             Image("login").resizable().frame(width: 30, height: 30)   .font(.title)
-                            Text(Auth.auth().currentUser != nil ? "LogOut" : "Login").foregroundColor(Color("Color2")).font(.subheadline).bold()
+                            Text(Auth.auth().currentUser != nil ? "Logout" : "Login").foregroundColor(Color("Color2")).font(.subheadline).bold()
                             
                         }
                         
@@ -74,6 +69,15 @@ struct SettingsView: View {
                     
                 }
 
+                Section(header: Text("Developer").foregroundColor(Color("Color2")).font(.subheadline).bold()) {
+                      VStack(alignment: .leading, spacing: 10){
+                          
+                          Button("Dustin Yang  - Github page") {UIApplication.shared.open(URL(string: "https://github.com/srdpt3")!)}
+                          
+                      }
+                      
+                      
+                  }
                 
                 
                 if UIDevice.current.userInterfaceIdiom == .pad {

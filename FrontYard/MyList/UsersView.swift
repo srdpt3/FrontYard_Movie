@@ -30,7 +30,7 @@ struct UsersView: View {
                                 
                                 VStack(alignment: .leading, spacing: 5) {
                                     Text(user.username).font(.headline).bold()
-                                    Text("IOS Developer").font(.subheadline)
+//                                    Text("IOS Developer").font(.subheadline)
                                 }
                                 
                             }.padding(10)

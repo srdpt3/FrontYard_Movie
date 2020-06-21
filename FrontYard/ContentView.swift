@@ -297,13 +297,13 @@ struct Home : View {
                             if(User.currentUser() != nil){
                                 ProfileView()
                             }else{
-                                //                                LoginView(showLoginView: self.$showLoginView)
                                 VStack(spacing: 10){
                                     Spacer()
                                     Button(action: {
                                         
                                     }) {
-                                        Text("Please SignIn to access the page").foregroundColor(Color("Color2")).font(.subheadline).bold().padding()
+                                        
+                                        emptyListView()
                                         
                                     }
                                     Spacer()
@@ -334,6 +334,39 @@ struct Home : View {
         }
         .background(Color("Color").edgesIgnoringSafeArea(.all))
         .edgesIgnoringSafeArea(.all)
+        
+    }
+}
+
+
+struct emptyListView : View {
+    var body: some View{
+        ZStack{
+            Spacer()
+            VStack{
+                Text("Please Login first to access to this page   ").foregroundColor(Color("Color2")).font(.headline).fontWeight(.heavy).padding().foregroundColor(.black).lineLimit(nil)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 40)
+                Text("Setting => Authentication ").foregroundColor(Color("Color2")).font(.headline).fontWeight(.heavy).padding().foregroundColor(.black).lineLimit(nil)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 40)
+                Spacer()
+
+
+            }.padding(.top, 100)
+            
+            HStack(alignment: .center){
+                Text("                           ").foregroundColor(Color("Color2")).font(.headline).fontWeight(.heavy).padding().foregroundColor(.black).lineLimit(nil)
+                .multilineTextAlignment(.center)
+                .padding(.all, 40)
+                
+            }.background( Image("1024").renderingMode(.original).resizable().scaledToFill().clipped().edgesIgnoringSafeArea(.top)).opacity(0.1)
+            
+        }
+        
+        
+        
+        
         
     }
 }

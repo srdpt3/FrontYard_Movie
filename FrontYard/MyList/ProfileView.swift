@@ -39,7 +39,7 @@ struct ProfileView: View {
                         ProfileHeader(user: profileViewModel.user, followingUsers: $followingViewModel.users, followerUsers: $followerViewModel.users, movieCount: profileViewModel.posts.count, followingCount: $profileViewModel.followingCountState, followersCount: $profileViewModel.followersCountState)
                         
                         
-                                                EditProfileButton()
+//                                                EditProfileButton()
                         ProfileInformation(user: self.profileViewModel.user)
                         //
                         //                        Picker(selection: $selection, label: Text("Grid or Table")) {
@@ -48,6 +48,8 @@ struct ProfileView: View {
                         //
                         //                            }
                         //                        }.pickerStyle(SegmentedPickerStyle()).padding(.leading, 20).padding(.trailing, 20)
+                        Divider()
+
                         if !profileViewModel.isLoading {
                             GridPosts(splitted: self.profileViewModel.splitted)
                             
